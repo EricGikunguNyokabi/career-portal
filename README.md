@@ -159,6 +159,7 @@ Guests().
     > File Storage: Local
     > Security: Laravel Breeze
     > Version control: Git->Github
+    
 # Project structure
     Routing
 

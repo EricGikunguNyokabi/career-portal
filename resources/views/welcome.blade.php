@@ -28,6 +28,7 @@
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                        <th></th>
                         <th>Job Title</th>
                         <th>Position Needed</th>
                         <th>Job Grade</th>
@@ -36,27 +37,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Software Developer</td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>AD123</td>
-                        <td><a href="#" class="btn btn-info btn-sm">View Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>Network Administrator</td>
-                        <td>2</td>
-                        <td>B</td>
-                        <td>AD124</td>
-                        <td><a href="#" class="btn btn-info btn-sm">View Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>Data Analyst</td>
-                        <td>1</td>
-                        <td>C</td>
-                        <td>AD125</td>
-                        <td><a href="#" class="btn btn-info btn-sm">View Details</a></td>
-                    </tr>
+
+                    @foreach ($jobPostings as $jobPosting)
+                        <tr>
+                            <th>{{ $loop->iteration }}  </th>
+                            <td>{{ $jobPosting->title }} </td>
+                            <td>{{ $jobPosting->position_needed }} </td>
+                            <td>{{ $jobPosting->job_grade }} </td>
+                            <td>{{ $jobPosting->advert_no }} </td>
+                            <td style="display:flex; align-items:center;">
+                                <a href="#" class="btn btn-info btn-sm">View Details</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>

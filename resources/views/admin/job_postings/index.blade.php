@@ -8,7 +8,7 @@
 @endsection 
 
 @section('main')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <h1 class="text-center">Job Postings</h1>
     <div class="mb-3 text-right">
         <a href="{{ route('admin.create_job_posting') }}" class="btn btn-primary">Create New Job Posting</a>

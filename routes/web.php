@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\JobPosting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $jobPostings = JobPosting::all();
+    return view('welcome', compact('jobPostings'));
+})->name('home');
 
 
 Route::get('/unauthorized', function () {

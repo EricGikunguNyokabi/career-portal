@@ -53,13 +53,13 @@
 
  <!-- Navbar -->
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light mr-3 text-sm" style="opacity:0.8">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light mr-3 text-sm" style="opacity:1">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-sm-inline-block">
-                    <a href="" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-home"></i> Home</a>
                 </li>
             </ul>
             <!-- Top Navigationbar -->
@@ -104,12 +104,24 @@
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column text-sm" data-widget="treeview" role="menu" data-accordion="false">
-                        @if (Auth::check())
+                    @if (Auth::check())
                         <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
-                                <p>Dashboard</p>
-                            </a>
+                            @if (Auth::user()->role === 'admin') <!-- Check if user is admin -->
+                                <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                                    <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
+                                    <p>Admin Dashboard</p>
+                                </a>
+                            @elseif (Auth::user()->role === 'hr') <!-- Check if user is hr -->
+                                <a href="{{ route('hr.dashboard') }}" class="nav-link">
+                                    <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
+                                    <p>HR Dashboard</p>
+                                </a>
+                            @elseif (Auth::user()->role === 'applicant') <!-- Check if user is applicant -->
+                                <a href="{{ route('applicant.dashboard') }}" class="nav-link">
+                                    <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
+                                    <p>Applicant Dashboard</p>
+                                </a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
@@ -117,7 +129,7 @@
                                 <p>Profile</p>
                             </a>
                         </li>
-                        @else
+                    @else
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="nav-link link log-in-link mt-2">
                                 <i class="fas fa-sign-in-alt fa-2x nav-icon"></i>
@@ -130,7 +142,7 @@
                                 <p>Register</p>
                             </a>
                         </li>
-                        @endif
+                    @endif
                     </ul>
                 </nav>
             </div>
@@ -144,7 +156,7 @@
                         .container{ margin-left: auto; margin-right: auto; }
                     </style>
                     <!-- main content page -->
-                    <div class="container-fluid mt-5">
+                    <div class="container mt-5 mb-5">
                     @yield('main')
                     </div>
                 </div>
@@ -153,8 +165,8 @@
 
         @yield('footer')
 
-        <footer class="main-footer text-sm" style="opacity:0.8">
-            &copy; 2024: Developed by <a href="https://egn.pythonanywhere.com/" target="_blank">E.G.N</a>
+        <footer class="main-footer text-sm" style="opacity:1">
+            &copy; 2024: Developed by <a href="https://github.com/EricGikunguNyokabi" target="_blank">E.G.N</a>
             <div class="float-right d-sm-inline-block">
                 <a href="https://wa.me/254701838170" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
             </div>

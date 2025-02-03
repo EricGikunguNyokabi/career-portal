@@ -14,7 +14,7 @@
 
             <!-- Applicant Management -->
             <li class="nav-header">APPLICANT MANAGEMENT</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.applicant_list') }}" class="nav-link link applicant-list-link">
                     <i class="nav-icon fas fa-users fa-2x"></i>
                     <p>Applicant List</p>
@@ -31,7 +31,7 @@
                     <i class="nav-icon fas fa-filter fa-2x"></i>
                     <p>Filter Applicants</p>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Job Postings -->
             <li class="nav-header">JOB POSTINGS</li>
@@ -47,23 +47,12 @@
                     <p>Create Job Posting</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.edit_job_posting', ['id' => 1]) }}" class="nav-link link edit-job-posting-link">
-                    <i class="nav-icon fas fa-edit fa-2x"></i>
-                    <p>Edit Job Posting</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.delete_job_posting', ['id' => 1]) }}" class="nav-link link delete-job-posting-link">
-                    <i class="nav-icon fas fa-trash fa-2x"></i>
-                    <p>Delete Job Posting</p>
-                </a>
-            </li>
+
             
 
             <!-- Application Management -->
             <li class="nav-header">APPLICATION MANAGEMENT</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.view_applications') }}" class="nav-link link view-applications-link">
                     <i class="nav-icon fas fa-file-alt fa-2x"></i>
                     <p>View Applications</p>
@@ -86,11 +75,11 @@
                     <i class="nav-icon fas fa-trash-alt fa-2x"></i>
                     <p>Delete Application</p>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Interview Scheduling -->
             <li class="nav-header">INTERVIEW SCHEDULING</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.interviews') }}" class="nav-link link interviews-link">
                     <i class="nav-icon fas fa-calendar-alt fa-2x"></i>
                     <p>View Interviews</p>
@@ -107,11 +96,11 @@
                     <i class="nav-icon fas fa-calendar-times fa-2x"></i>
                     <p>Reschedule Interview</p>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Document Management -->
             <li class="nav-header">DOCUMENT MANAGEMENT</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.documents') }}" class="nav-link link documents-link">
                     <i class="nav-icon fas fa-folder fa-2x"></i>
                     <p>View Documents</p>
@@ -122,11 +111,11 @@
                     <i class="nav-icon fas fa-upload fa-2x"></i>
                     <p>Upload Documents</p>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Reports & Analytics -->
             <li class="nav-header">REPORTS & ANALYTICS</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.reports') }}" class="nav-link link reports-link">
                     <i class="nav-icon fas fa-chart-line fa-2x"></i>
                     <p>Reports</p>
@@ -137,16 +126,16 @@
                     <i class="nav-icon fas fa-chart-pie fa-2x"></i>
                     <p>Analytics</p>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Notifications -->
             <li class="nav-header">NOTIFICATIONS</li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('admin.notifications') }}" class="nav-link link notifications-link">
                     <i class="nav-icon fas fa-bell fa-2x"></i>
                     <p>Notifications</p>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
