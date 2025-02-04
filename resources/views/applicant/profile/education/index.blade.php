@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.master')
 
 @section('side_navbar')
     @include('layouts.applicant_sidebar')
@@ -9,7 +9,7 @@
         <!-- Back to Dashboard Button -->
         <div class="col-md-6">
             <button type="button" class="btn btn-warning btn-sm mt-2">
-                <a href="#" class="text-white text-decoration-none">
+                <a href="{{ route('applicant.dashboard') }}" class="text-white text-decoration-none">
                     <i class="bi bi-arrow-left"></i> <span class="text-dark">Back to Dashboard</span>
                 </a>
             </button>

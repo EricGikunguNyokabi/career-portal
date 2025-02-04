@@ -94,7 +94,7 @@
 
         <!-- Sidebar -->
         <aside class="main-sidebar elevation-4 sidebar-light-dark">
-            <a href="" class="brand-link text-sm">
+            <a href="{{route('home') }}" class="brand-link text-sm">
                 <img src="{{ asset('images/findjob.png') }}" alt="Vtech Recruiters Logo"
                     class="brand-image img-circle elevation-1" style="opacity: 1">
                 <span class="brand-text font-weight-bold"> {{ $company_name ?? 'VTECH RECRUITMENT PORTAL' }}</span>

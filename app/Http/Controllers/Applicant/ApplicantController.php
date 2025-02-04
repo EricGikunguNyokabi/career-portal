@@ -28,7 +28,7 @@ class ApplicantController extends Controller
         return view('applicant.profile.personal_details.index', compact('user'));
     }
 
-    public function updateProfile(Request $request)
+    public function update(Request $request)
     {
         $user = Auth::user(); // Get the authenticated user
 
@@ -63,14 +63,27 @@ class ApplicantController extends Controller
         if ($request->hasFile('profile_picture')) {
             // Delete old profile picture if exists
             if ($user->profile_picture) {
-                Storage::delete($user->profile_picture);
+                // Assuming the old profile picture is stored in the public directory
+                $oldImagePath = public_path($user->profile_picture);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath); // Delete the old image file
+                }
             }
+
             // Store new profile picture
-            $user->profile_picture = $request->file('profile_picture')->store('profile_pictures');
+            $image = $request->file('profile_picture');
+            $imageName = time().'_'.$user->id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/profile_pictures');
+            $image->move($destinationPath, $imageName);
+
+            // Save the image path to the database
+            $user->profile_picture = '/images/profile_pictures/'.$imageName;
         }
 
+
         // Save the updated user details
-        $user->save();
+        // dd($user);
+        $user->save(); #ignore:save 
 
         // Redirect back with a success message
         return redirect()->route('applicant.profile')->with('success', 'Profile updated successfully.');
