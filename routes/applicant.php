@@ -14,21 +14,22 @@ Route::middleware(['auth','role:applicant'])->prefix('applicant')->group(functio
     Route::get('/dashboard', [ApplicantController::class, 'dashboard'])->name('applicant.dashboard');
 
     // PERSONAL PROFILE
-    Route::get('/personal-profile', [ApplicantController::class, 'personalProfile'])->name('applicant.personal_profile');
-    // Route::put('/personal-profile', [ProfileController::class, 'updateProfile'])->name('applicant.updateProfile');
+    Route::get('/personal-profile', [ApplicantController::class, 'profile'])->name('applicant.profile');
+    Route::put('/personal-profile', [ApplicantController::class, 'updateProfile'])->name('applicant.updateProfile');
+
    
     
-    // // Route for viewing all education records
-    // Route::get('/education-profile', [EducationController::class, 'index'])->name('applicant.education_profile');
-    // // Route for displaying the form to create a new education record
-    // Route::get('/education-profile/create', [EducationController::class, 'create'])->name('applicant.education_create');
-    // // Route for storing a new education record
-    // Route::post('/education-profile', [EducationController::class, 'store'])->name('applicant.education_store');
-    // // Route for displaying the form to edit an existing education record
-    // Route::get('/education-profile/{education}/edit', [EducationController::class, 'edit'])->name('applicant.education_edit');
-    // // Route for updating an existing education record
-    // Route::put('/education-profile/{education}', [EducationController::class, 'update'])->name('applicant.education_update');
-    // Route::delete('/education-profile/{education}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
+    // Route for viewing all education records
+    Route::get('/education-profile', [EducationController::class, 'index'])->name('applicant.education_profile');
+    // Route for displaying the form to create a new education record
+    Route::get('/education-profile/create', [EducationController::class, 'create'])->name('applicant.education_create');
+    // Route for storing a new education record
+    Route::post('/education-profile', [EducationController::class, 'store'])->name('applicant.education_store');
+    // Route for displaying the form to edit an existing education record
+    Route::get('/education-profile/{education}/edit', [EducationController::class, 'edit'])->name('applicant.education_edit');
+    // Route for updating an existing education record
+    Route::put('/education-profile/{education}', [EducationController::class, 'update'])->name('applicant.education_update');
+    Route::delete('/education-profile/{education}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
     
 
     // OTHER TRAININGS
@@ -59,6 +60,7 @@ Route::middleware(['auth','role:applicant'])->prefix('applicant')->group(functio
     Route::get('/job-application-history', [ApplicantController::class, 'applicationHistory'])->name('applicant.application_history');
 
     // ADVERTISED JOBS
+    Route::get('/jobs-advertised', [ApplicantController::class, 'vacancies'])->name('applicant.jobs');
     Route::get('/jobs-advertised', [ApplicantController::class, 'vacancies'])->name('applicant.advertised_jobs');
     Route::get('/jobs-advertised/{id}', [ApplicantController::class, 'singleJob'])->name('applicant.single_job');
 });

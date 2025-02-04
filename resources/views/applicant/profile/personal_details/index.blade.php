@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.master')
 
 @section('side_navbar')
     @include('layouts.applicant_sidebar')
@@ -28,18 +28,12 @@
         <div class="card-body">
             <div class="row">
                 <!-- Profile Image -->
-                <!-- <div class="col-md-3 d-flex justify-content-center mb-3">
-                    <img src="{#{ asset('images/Eric.jpg') }#}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;"> -->
-                    <!-- <img src="{#{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/default_profile.png') }#}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;"> 
-                    <img src="{#{ asset('storage/profile_pictures/' . $user->profile_picture) }#}" alt="Profile Picture" style="width: 150px; height: 150px;">
-
-                </div> -->
-
                 <div class="profile-picture col-md-3 d-flex justify-content-center mb-3">
                     @if($user->profile_picture)
                         <img src="{{ asset($user->profile_picture) }}" alt="Profile Picture" class="rounded-circle"  style="width: 150px; height: 150px;">
                     @else
-                        <img src="{{ asset('images/DRS-Logo.png') }}" alt="Default Profile Picture" class="rounded-circle"  style="width: 150px; height: 150px;">
+                        <img src="{{ asset('images/VTECH.png') }}" alt="{{ $user->first_name }}" class="rounded-circle"  style="width: 150px; height: 150px;">
+                        
                     @endif
                 </div>
 
@@ -120,19 +114,7 @@
         </div>
     </div>
 
-    <!-- Profile Completion Progress Bar -->
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h5>Profile Completion</h5>
-        </div>
-        <div class="card-body">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: {{ $profileCompletion }}%;" aria-valuenow="{{ $profileCompletion }}" aria-valuemin="0" aria-valuemax="100">
-                    {{ number_format($profileCompletion, 2) }}%
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -187,11 +169,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="gender" class="form-label">Gender <span class="required">*</span></label>
-                            <select class="form-select" id="gender" name="gender" required>
+                            <select class="form-select form-control" id="gender" name="gender" required>
                                 <option value="">Click to Select</option>
-                                <option value="Female" {{ $user->gender == 'Female' ? 'selected' : '' }}>Female</option>
-                                <option value="Male" {{ $user->gender == 'Male' ? 'selected' : '' }}>Male</option>
-                                <option value="Other" {{ $user->gender == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option value="Female" {{ old('gender', $user->gender) == 'Female' ? 'selected' : '' }}>Female</option>
+                                <option value="Male" {{ old('gender', $user->gender) == 'Male' ? 'selected' : '' }}>Male</option>
                             </select>
                         </div>
                         <!-- Profile picture -->

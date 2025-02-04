@@ -16,28 +16,35 @@
         <!-- Key Metrics -->
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card bg-info text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Applicants</h5>
-                        <h3 class="card-text">350</h3>
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-info text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Applicants</h5>
+                            <h3 class="card-text">350</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="card bg-success text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Jobs Posted</h5>
-                        <h3 class="card-text">25</h3>
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Jobs Posted</h5>
+                            <h3 class="card-text">{{ $jobPostingCount }}</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
+
             <div class="col-md-4">
-                <div class="card bg-danger text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Applications Received</h5>
-                        <h3 class="card-text">1200</h3>
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Applications Received</h5>
+                            <h3 class="card-text">1200</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 

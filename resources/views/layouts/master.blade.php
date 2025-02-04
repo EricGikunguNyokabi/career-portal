@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Vtech Recsruiters, Jobs Portal.">
+    <meta name="description" content="Vtech Recruiters, Jobs Portal.">
     <title id="page-title">
         @yield('title') {{ $company_name ?? 'VTECH RECRUITERS' }}
     </title>
@@ -97,7 +97,7 @@
             <a href="" class="brand-link text-sm">
                 <img src="{{ asset('images/findjob.png') }}" alt="Vtech Recruiters Logo"
                     class="brand-image img-circle elevation-1" style="opacity: 1">
-                <span class="brand-text font-weight-bold"> {{ $company_name ?? 'VTECH RECRUITERS' }}</span>
+                <span class="brand-text font-weight-bold"> {{ $company_name ?? 'VTECH RECRUITMENT PORTAL' }}</span>
             </a>
 
             @yield('side_navbar')
@@ -116,6 +116,11 @@
                                     <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
                                     <p>HR Dashboard</p>
                                 </a>
+                            @elseif (Auth::user()->role === 'management') <!-- Check if user is management -->
+                                <a href="{{ route('management.dashboard') }}" class="nav-link">
+                                    <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
+                                    <p>Management Dashboard</p>
+                                </a>
                             @elseif (Auth::user()->role === 'applicant') <!-- Check if user is applicant -->
                                 <a href="{{ route('applicant.dashboard') }}" class="nav-link">
                                     <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
@@ -123,13 +128,27 @@
                                 </a>
                             @endif
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
+                        <li class="nav-item mt-5 py-5">
+                            <a id="logout-form"  href="{{ route('logout') }}" class="nav-link"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fas fa-user fa-2x nav-icon"></i>
-                                <p>Profile</p>
+                                <p>Logout</p>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+
+
+
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link link log-in-link mt-2">
+                                <i class="fas fa-home fa-2x nav-icon"></i>
+                                <p>Home</p>
                             </a>
                         </li>
-                    @else
+
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="nav-link link log-in-link mt-2">
                                 <i class="fas fa-sign-in-alt fa-2x nav-icon"></i>
@@ -151,12 +170,12 @@
 
         <div class="content-wrapper">
             <section class="content">
-                <div class="container-fluid" id="dynamic-content" style="width: auto;">
+                <div class="container-fluid" id="dynamic-content" style="width: auto; padding: 0 0 0 0;">
                     <style>
                         .container{ margin-left: auto; margin-right: auto; }
                     </style>
                     <!-- main content page -->
-                    <div class="container mt-5 mb-5">
+                    <div class="container-fluid mt-5 mb-5">
                     @yield('main')
                     </div>
                 </div>
@@ -179,13 +198,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0-rc/js/adminlte.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-1.13.8/datatables.min.js"></script>
-    <!-- Add your custom JavaScript files here -->
     <script>
-        $(document).ready(function() {
-            // Initialize DataTables
-            $('#your-table-id').DataTable();
-            // Other custom scripts can go here
-        });
+        // $(document).ready(function() {
+        //     // Initialize DataTables
+        //     $('#your-table-id').DataTable();
+        // });
     </script>
 </body>
 

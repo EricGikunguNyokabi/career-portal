@@ -12,6 +12,15 @@
                 </a>
             </li>
 
+             <!-- User Management -->
+             <li class="nav-header">USER MANAGEMENT</li>
+            <li class="nav-item">
+                <a href="{{ route('admin.user_list') }}" class="nav-link link user-list-link">
+                    <i class="nav-icon fas fa-users fa-2x"></i>
+                    <p>Registered Users</p>
+                </a>
+            </li>
+
             <!-- Applicant Management -->
             <li class="nav-header">APPLICANT MANAGEMENT</li>
             <!-- <li class="nav-item">

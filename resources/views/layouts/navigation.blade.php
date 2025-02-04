@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('applicant.dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Applicant-Dash') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('hr.dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('HR-Dash') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('mgt.dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Management-Dash') }}
+                    </x-nav-link>
 
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Admin-Dash') }}

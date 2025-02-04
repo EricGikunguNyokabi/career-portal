@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\JobPostingController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // Dashboard
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    // User Management
+    Route::get('/users', [UserController::class, 'index'])->name('admin.user_list'); // List users
+    Route::get('/users/create', [UserController::class, 'create'])->name('admin.create_user'); // Create user
+    Route::post('/users', [UserController::class, 'store'])->name('admin.store_user'); // Store new user
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.edit_user'); // Edit user
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.update_user'); // Update user
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.delete_user'); // Delete user
 
     // Applicant Management
     Route::get('/applicants', [AdminController::class, 'index'])->name('admin.applicant_list');

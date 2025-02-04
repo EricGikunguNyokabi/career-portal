@@ -1,46 +1,55 @@
 <?php
+
+use App\Http\Controllers\Management\ManagementController;
+use App\Http\Controllers\Management\JobPostingController;
+use App\Http\Controllers\Management\ApplicationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HR\HRController;
 
-// HR routes
-Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
-    // DASHBOARD
-    Route::get('/dashboard', [HRController::class, 'dashboard'])->name('hr.dashboard');
+/*
+|--------------------------------------------------------------------------
+| Management Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application.
+| These routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-    // APPLICANT MANAGEMENT
-    Route::get('/applicant-list', [HRController::class, 'applicant_list'])->name('hr.applicant_list');
-    Route::get('/applicant/{id}', [HRController::class, 'view_applicant'])->name('hr.view_applicant');
-    Route::get('/applicant/filter', [HRController::class, 'filter_applicants'])->name('hr.filter_applicants');
-    
-    // JOB POSTINGS
-    Route::get('/job-postings', [HRController::class, 'job_postings'])->name('hr.job_postings');
-    Route::get('/job-postings/create', [HRController::class, 'create_job_posting'])->name('hr.create_job_posting');
-    Route::post('/job-postings/store', [HRController::class, 'store_job_posting'])->name('hr.store_job_posting');
-    Route::get('/job-postings/{id}/edit', [HRController::class, 'edit_job_posting'])->name('hr.edit_job_posting');
-    Route::put('/job-postings/{id}/update', [HRController::class, 'update_job_posting'])->name('hr.update_job_posting');
-    Route::delete('/job-postings/{id}/delete', [HRController::class, 'delete_job_posting'])->name('hr.delete_job_posting');
-    Route::get('/job-postings/filter', [HRController::class, 'filter_job_postings'])->name('hr.filter_job_postings');
+Route::middleware(['auth', 'role:management'])->prefix('management')->group(function () {
+    // Dashboard
+    Route::get('/', [ManagementController::class, 'dashboard'])->name('mgt.dashboard');
 
-    // APPLICATION MANAGEMENT
-    Route::get('/applications', [HRController::class, 'view_applications'])->name('hr.view_applications');
-    Route::get('/application/{id}', [HRController::class, 'view_application'])->name('hr.view_application');
-    Route::post('/application/{id}/update-status', [HRController::class, 'update_application_status'])->name('hr.update_application_status');
-    Route::delete('/application/{id}/delete', [HRController::class, 'delete_application'])->name('hr.delete_application');
+    // Job Postings
+    Route::get('/job-postings', [JobPostingController::class, 'index'])->name('management.job_postings');
+    Route::get('/job-postings/create', [JobPostingController::class, 'create'])->name('management.create_job_posting');
+    Route::post('/job-postings', [JobPostingController::class, 'store'])->name('management.store_job_posting');
+    Route::get('/job-postings/{id}/edit', [JobPostingController::class, 'edit'])->name('management.edit_job_posting');
+    Route::put('/job-postings/{id}', [JobPostingController::class, 'update'])->name('management.update_job_posting');
+    Route::delete('/job-postings/{id}', [JobPostingController::class, 'destroy'])->name('management.delete_job_posting');
 
-    // REPORTS & ANALYTICS
-    Route::get('/reports', [HRController::class, 'reports'])->name('hr.reports');
-    Route::get('/analytics', [HRController::class, 'analytics'])->name('hr.analytics');
+    // Applicant Management
+    Route::get('/applicants', [ManagementController::class, 'index'])->name('management.applicant_list');
+    Route::get('/applicants/{id}', [ManagementController::class, 'show'])->name('management.view_applicant');
+    Route::get('/applicants/filter', [ManagementController::class, 'filter'])->name('management.filter_applicants');
 
-    // NOTIFICATIONS
-    Route::get('/notifications', [HRController::class, 'notifications'])->name('hr.notifications');
+    // Application Management
+    Route::get('/applications', [ApplicationController::class, 'index'])->name('management.view_applications');
+    Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('management.view_application');
+    Route::put('/applications/{id}/status', [ApplicationController::class, 'updateStatus'])->name('management.update_application_status');
+    Route::delete('/applications/{id}', [ApplicationController::class, 'destroy'])->name('management.delete_application');
 
-    // INTERVIEW SCHEDULING
-    Route::get('/interviews', [HRController::class, 'interviews'])->name('hr.interviews');
-    Route::post('/interviews/schedule', [HRController::class, 'schedule_interview'])->name('hr.schedule_interview');
-    Route::post('/interviews/reschedule', [HRController::class, 'reschedule_interview'])->name('hr.reschedule_interview');
+    // Interview Scheduling
+    Route::get('/interviews', [ManagementController::class, 'index'])->name('management.interviews');
+    Route::get('/interviews/schedule', [ManagementController::class, 'create'])->name('management.schedule_interview');
+    Route::post('/interviews', [ManagementController::class, 'store'])->name('management.store_interview');
+    Route::get('/interviews/{id}/reschedule', [ManagementController::class, 'edit'])->name('management.reschedule_interview');
+    Route::put('/interviews/{id}', [ManagementController::class, 'update'])->name('management.update_interview');
 
-    // DOCUMENT MANAGEMENT
-    Route::get('/documents', [HRController::class, 'documents'])->name('hr.documents');
-    Route::post('/documents/upload', [HRController::class, 'upload_documents'])->name('hr.upload_documents');
-    Route::get('/documents/{id}/download', [HRController::class, 'download_document'])->name('hr.download_document');
+    // Reports & Analytics
+    Route::get('/reports', [ManagementController::class, 'index'])->name('management.reports');
+    Route::get('/analytics', [ManagementController::class, 'analytics'])->name('management.analytics');
+
+    // Notifications
+    Route::get('/notifications', [ManagementController::class, 'index'])->name('management.notifications');
 });

@@ -100,6 +100,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # Install Spatie Laravel Permission Package
 > composer require spatie/laravel-permission
+
 # publish configuration 
 > php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 > php artisan migrate

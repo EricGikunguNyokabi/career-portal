@@ -42,3 +42,7 @@ require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';
 // Applicant routes
 require __DIR__.'/applicant.php';
+// HR routes
+require __DIR__.'/hr.php';
+// Management routes 
+require __DIR__.'/management.php';
