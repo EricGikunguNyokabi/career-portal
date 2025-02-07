@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('job_applications', function (Blueprint $table) {
-            $table->id(); 
-            $table->foreignId('applicant_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('applicant_id')->constrained('users')->onDelete('cascade'); 
             $table->foreignId('job_id')->constrained('job_postings')->onDelete('cascade'); // Foreign key referencing job_postings table
             $table->timestamps(); 
         });

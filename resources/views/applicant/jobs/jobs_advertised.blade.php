@@ -25,7 +25,7 @@
             </div>
         @endif
 
-        <!-- Advertised Jobs List -->
+        <!-- Advertised Jobs Table -->
         <div class="card mt-3">
             <div class="card-header">
                 <h5 class="mb-0">Advertised Jobs</h5>
@@ -36,16 +36,31 @@
                         No jobs available at the moment.
                     </div>
                 @else
-                    <div class="list-group">
-                        @foreach($jobs as $job)
-                            <div class="list-group-item d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h5 class="mb-1">{{ $job->title }}</h5>
-                                    <p class="mb-1">{{ Str::limit($job->description, 100) }}</p>
-                                </div>
-                                <a href="{{ route('applicant.single_job_posting', $job->id) }}" class="btn btn-primary btn-sm">View Job</a>
-                            </div>
-                        @endforeach
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <th>Description</th>
+                                    <th>Posted On</th>
+                                    <th>Posted On</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($jobs as $job)
+                                    <tr>
+                                        <td>{{ $job->title }}</td>
+                                        <td>{{ Str::limit($job->description, 100) }}</td>
+                                        <td>{{ $job->created_at->format('Y-m-d') }}</td>
+                                        <td>{{ $job->application_deadline->format('Y-m-d') }}</td>
+                                        <td>
+                                            <a href="{{ route('applicant.single_job_posting', $job->id) }}" class="btn btn-primary btn-sm">View Job</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 @endif
             </div>
