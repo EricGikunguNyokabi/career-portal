@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Applicant\EducationController;
 use App\Http\Controllers\Applicant\OtherTrainingsController;
 use App\Http\Controllers\Applicant\EmploymentHistoryController;
+use App\Http\Controllers\Applicant\RefereesController;
 use App\Models\Education;
 
 
@@ -33,6 +34,15 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     Route::delete('/education-profile/{education}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
     
 
+    // OTHER TRAININGS
+    Route::get('/other-trainings', [OtherTrainingsController::class, 'index'])->name('applicant.other_trainings'); 
+    Route::get('/other-trainings/create', [OtherTrainingsController::class, 'create'])->name('applicant.other_trainings_create'); 
+    Route::post('/other-trainings', [OtherTrainingsController::class, 'store'])->name('applicant.other_trainings_store'); 
+    Route::get('/other-trainings/{id}/edit', [OtherTrainingsController::class, 'edit'])->name('applicant.other_trainings_edit'); 
+    Route::put('/other-trainings/{id}', [OtherTrainingsController::class, 'update'])->name('applicant.other_trainings_update');
+    Route::delete('/other-trainings/{id}', [OtherTrainingsController::class, 'destroy'])->name('applicant.other_trainings_delete'); 
+
+
 
     // EMPLOYMENT HISTORY
     Route::get('/employment-history', [EmploymentHistoryController::class, 'index'])->name('applicant.employment_profile');
@@ -43,16 +53,14 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     Route::delete('/employment-history/{id}', [EmploymentHistoryController::class, 'destroy'])->name('applicant.employment_delete');
 
 
-    // OTHER TRAININGS
-    Route::get('/other-trainings', [OtherTrainingsController::class, 'index'])->name('applicant.other_trainings'); 
-    Route::get('/other-trainings/create', [OtherTrainingsController::class, 'create'])->name('applicant.other_trainings_create'); 
-    Route::post('/other-trainings', [OtherTrainingsController::class, 'store'])->name('applicant.other_trainings_store'); 
-    Route::get('/other-trainings/{id}/edit', [OtherTrainingsController::class, 'edit'])->name('applicant.other_trainings_edit'); 
-    Route::put('/other-trainings/{id}', [OtherTrainingsController::class, 'update'])->name('applicant.other_trainings_update');
-    Route::delete('/other-trainings/{id}', [OtherTrainingsController::class, 'destroy'])->name('applicant.other_trainings_delete'); 
-
+    
     // REFEREES
-    Route::get('/referees', [ApplicantController::class, 'referees'])->name('applicant.referees');
+    Route::get('/referees', [RefereesController::class, 'index'])->name('applicant.referees');
+    Route::get('/referees/create', [RefereesController::class, 'create'])->name('applicant.referees.create');
+    Route::post('/referees', [RefereesController::class, 'store'])->name('applicant.referees.store');
+    Route::get('/referees/{id}/edit', [RefereesController::class, 'edit'])->name('applicant.referees.edit');
+    Route::put('/referees/{id}', [RefereesController::class, 'update'])->name('applicant.referees.update');
+    Route::delete('/referees/{id}', [RefereesController::class, 'destroy'])->name('applicant.referees.delete');
 
     // FILE UPLOADS
     Route::get('/file-upload', [ApplicantController::class, 'uploadFiles'])->name('applicant.files_upload');

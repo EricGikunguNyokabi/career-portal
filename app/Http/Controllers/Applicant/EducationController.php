@@ -12,12 +12,12 @@ class EducationController extends Controller
     public function index()
     {
         $educations = Education::where('user_id', Auth::id())->get();
-        return view('applicant.education.education_profile', compact('educations'));
+        return view('applicant.education.index', compact('educations'));
     }
 
     public function create()
     {
-        return view('applicant.education.create_education');
+        return view('applicant.education.create');
     }
 
     public function store(Request $request)
@@ -41,12 +41,12 @@ class EducationController extends Controller
             'end_date' => $request->end_date,
         ]);
 
-        return redirect()->route('applicant.educationProfile')->with('success', 'Education record added successfully.');
+        return redirect()->route('applicant.education_profile')->with('success', 'Education record added successfully.');
     }
 
     public function edit(Education $education)
     {
-        return view('applicant.education.edit_education', compact('education'));
+        return view('applicant.education.edit', compact('education'));
     }
 
     public function update(Request $request, Education $education)
@@ -69,13 +69,13 @@ class EducationController extends Controller
             'end_date' => $request->end_date,
         ]);
 
-        return redirect()->route('applicant.educationProfile')->with('success', 'Education record updated successfully.');
+        return redirect()->route('applicant.education_profile')->with('success', 'Education record updated successfully.');
     }
 
     public function destroy(Education $education)
     {
         $education->delete();
-        return redirect()->route('applicant.educationProfile')->with('success', 'Education record deleted successfully.');
+        return redirect()->route('applicant.education_profile')->with('success', 'Education record deleted successfully.');
     }
 }
 

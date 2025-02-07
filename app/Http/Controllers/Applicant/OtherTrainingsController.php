@@ -58,7 +58,7 @@ class OtherTrainingsController extends Controller
         $otherTraining = OtherTraining::findOrFail($id); // Find the record or fail
         $otherTraining->update($request->all()); // Update the record
 
-        return redirect()->route('applicant.other_training.edit')->with('success', 'Other training updated successfully.');
+        return redirect()->route('applicant.other_trainings')->with('success', 'Other training updated successfully.');
     }
 
     // Remove the specified training record from storage

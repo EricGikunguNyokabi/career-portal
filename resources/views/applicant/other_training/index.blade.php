@@ -126,8 +126,30 @@
     <!-- Edit Other Training Modal -->
     <div class="modal fade" id="editOtherTrainingModal" tabindex="-1" aria-labelledby="editOtherTrainingModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Content dynamically loaded using JS or AJAX -->
+            <div class="modal-content p-3">
+            <form action="{{ route('applicant.other_trainings_update', $training->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="mb-3">
+                    <label for="institutionName" class="form-label">Institution Name</label>
+                    <input type="text" class="form-control" id="institutionName" name="institution_name" value="{{ $training->institution_name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="course" class="form-label">Course</label>
+                    <input type="text" class="form-control" id="course" name="course" value="{{ $training->course }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="startDate" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" name="start_date" value="{{ \Carbon\Carbon::parse($training->start_date)->format('Y-m-d') }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="endDate" class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="endDate" name="end_date" value="{{ $training->end_date ? \Carbon\Carbon::parse($training->end_date)->format('Y-m-d') : '' }}">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
             </div>
         </div>
     </div>
