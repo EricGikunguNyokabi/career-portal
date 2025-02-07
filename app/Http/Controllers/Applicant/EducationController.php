@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Http\Controllers\Applicant;
+
+use App\Http\Controllers\Controller;
+use App\Models\Education;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class EducationController extends Controller
+{
+    public function index()
+    {
+        $educations = Education::where('user_id', Auth::id())->get();
+        return view('applicant.education.education_profile', compact('educations'));
+    }
+
+    public function create()
+    {
+        return view('applicant.education.create_education');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'institution_name' => 'required|string|max:255',
+            'academic_level' => 'required|string|max:255',
+            'course' => 'required|string|max:255',
+            'grade' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date',
+        ]);
+
+        Education::create([
+            'user_id' => Auth::id(),
+            'institution_name' => $request->institution_name,
+            'academic_level' => $request->academic_level,
+            'course' => $request->course,
+            'grade' => $request->grade,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        return redirect()->route('applicant.educationProfile')->with('success', 'Education record added successfully.');
+    }
+
+    public function edit(Education $education)
+    {
+        return view('applicant.education.edit_education', compact('education'));
+    }
+
+    public function update(Request $request, Education $education)
+    {
+        $request->validate([
+            'institution_name' => 'required|string|max:255',
+            'academic_level' => 'required|string|max:255',
+            'course' => 'required|string|max:255',
+            'grade' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date',
+        ]);
+
+        $education->update([
+            'institution_name' => $request->institution_name,
+            'academic_level' => $request->academic_level,
+            'course' => $request->course,
+            'grade' => $request->grade,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        return redirect()->route('applicant.educationProfile')->with('success', 'Education record updated successfully.');
+    }
+
+    public function destroy(Education $education)
+    {
+        $education->delete();
+        return redirect()->route('applicant.educationProfile')->with('success', 'Education record deleted successfully.');
+    }
+}
+

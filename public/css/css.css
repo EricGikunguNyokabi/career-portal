@@ -1,0 +1,19 @@
+/* top nav for logout */
+/* .wrapper nav .main-header{
+    background: linear-gradient(rgb(5, 28, 104,.6),rgba(9, 27, 105, 1));
+}
+
+
+.sidebar{
+    background: linear-gradient(rgb(5, 28, 104,.1),rgba(9, 27, 105,.5));
+}
+
+.content-wrapper{
+    background: linear-gradient(rgb(5, 28, 104,.6),rgba(9, 27, 105,.5));
+} */
+
+.required {
+    color: red; /* Or any color you prefer */
+    font-size: 0.9em; /* Adjust the size as needed */
+    margin-left: 2px; /* Add some space between the label text and the asterisk */
+}
