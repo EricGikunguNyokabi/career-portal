@@ -78,6 +78,7 @@
                                             Edit
                                         </button>
                                     </td>
+                                    
                                     <td>
                                         <!-- Delete form with confirmation prompt -->
                                         <form action="{{ route('applicant.employment_delete', $employment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this entry?');">

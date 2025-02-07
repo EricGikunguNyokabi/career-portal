@@ -102,7 +102,7 @@
 
             @yield('side_navbar')
             <div class="sidebar">
-                <nav class="mt-2">
+                <nav class="mt-2 py-3">
                     <ul class="nav nav-pills nav-sidebar flex-column text-sm" data-widget="treeview" role="menu" data-accordion="false">
                     @if (Auth::check())
                         <li class="nav-item">

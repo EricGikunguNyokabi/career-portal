@@ -8,6 +8,8 @@ use App\Http\Controllers\Applicant\EducationController;
 use App\Http\Controllers\Applicant\OtherTrainingsController;
 use App\Http\Controllers\Applicant\EmploymentHistoryController;
 use App\Http\Controllers\Applicant\RefereesController;
+use App\Http\Controllers\Applicant\FileUploadController;
+use App\Http\Controllers\Applicant\JobApplicationController;
 use App\Models\Education;
 
 
@@ -23,13 +25,9 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     
     // EDUCATION
     Route::get('/education-profile', [EducationController::class, 'index'])->name('applicant.education_profile');
-    // Route for displaying the form to create a new education record
     Route::get('/education-profile/create', [EducationController::class, 'create'])->name('applicant.education_create');
-    // Route for storing a new education record
     Route::post('/education-profile', [EducationController::class, 'store'])->name('applicant.education_store');
-    // Route for displaying the form to edit an existing education record
     Route::get('/education-profile/{education}/edit', [EducationController::class, 'edit'])->name('applicant.education_edit');
-    // Route for updating an existing education record
     Route::put('/education-profile/{education}', [EducationController::class, 'update'])->name('applicant.education_update');
     Route::delete('/education-profile/{education}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
     
@@ -62,17 +60,20 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     Route::put('/referees/{id}', [RefereesController::class, 'update'])->name('applicant.referees.update');
     Route::delete('/referees/{id}', [RefereesController::class, 'destroy'])->name('applicant.referees.delete');
 
-    // FILE UPLOADS
-    Route::get('/file-upload', [ApplicantController::class, 'uploadFiles'])->name('applicant.files_upload');
-    Route::post('/file-upload', [ApplicantController::class, 'storeFiles'])->name('files.upload');
-    Route::get('/file-download/{id}', [ApplicantController::class, 'downloadFile'])->name('files.download');
-    Route::delete('/file-delete/{id}', [ApplicantController::class, 'deleteFile'])->name('files.delete');
 
-    // JOBS
-    // APPLICANT HISTORY
-    Route::get('/job-application-history', [ApplicantController::class, 'applicationHistory'])->name('applicant.application_history');
+    // FILE UPLOADS
+    Route::get('/file-upload', [FileUploadController::class, 'index'])->name('applicant.files_upload');
+    Route::post('/file-upload', [FileUploadController::class, 'store'])->name('applicant.document_store');
+    Route::delete('/file-upload/{id}', [FileUploadController::class, 'destroy'])->name('applicant.document_destroy');
+
+
+    // JOB APPLICATION HISTORY
+    Route::get('/job-application-history', [JobApplicationController::class, 'applicationHistory'])->name('applicant.application_history');
 
     // ADVERTISED JOBS
-    Route::get('/jobs-advertised', [ApplicantController::class, 'vacancies'])->name('applicant.advertised_jobs');
-    Route::get('/jobs-advertised/{id}', [ApplicantController::class, 'singleJob'])->name('applicant.single_job');
+    Route::get('/jobs-advertised', [JobApplicationController::class, 'vacancies'])->name('applicant.job_posting');
+    Route::get('/jobs-advertised/{id}', [JobApplicationController::class, 'singleJob'])->name('applicant.single_job_posting');
+
+    // APPLY FOR A JOB
+    Route::post('/jobs-advertised/{id}/apply', [JobApplicationController::class, 'apply'])->name('applicant.apply_job');
 });

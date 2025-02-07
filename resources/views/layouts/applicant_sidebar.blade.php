@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('applicant.advertised_jobs') }}" class="nav-link link advertised-jobs-link">
+                    <a href="{{ route('applicant.job_posting') }}" class="nav-link link advertised-jobs-link">
                         <i class="nav-icon far fa-file-alt fa-2x"></i>
                         <p>Advertised Jobs</p>
                     </a>
@@ -71,6 +71,8 @@
                         <p>My Saved Jobs</p>
                     </a>
                 </li>
+
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
