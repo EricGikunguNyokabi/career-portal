@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Vtech Recruiters, Jobs Portal.">
+    <meta name="description" content="Vtech Recruitment Portal, Jobs Portal.">
     <title id="page-title">
         @yield('title') {{ $company_name ?? 'VTECH RECRUITERS' }}
     </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/findjob.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/VTECH.png') }}">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -69,7 +69,7 @@
                     <a class="nav-link text-success">
                         <i class="far fa-user-circle"></i>
                         <span class="font-weight-bold">
-                            <span>Welcome {{ Auth::user()->name ?? '' }}</span>
+                            <span>Welcome {{ Auth::user()->name ?? Auth::user()->first_name }}</span>
                         </span>
                     </a>
                 </li>

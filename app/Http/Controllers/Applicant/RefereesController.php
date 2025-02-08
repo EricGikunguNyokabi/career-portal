@@ -10,10 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class RefereesController extends Controller
 {
     // Display a listing of the referees
+    // public function index()
+    // {
+    //     $referees = Referee::where('user_id', Auth::id())->get(); // Fetch referees associated with the authenticated user
+    //     return view('applicant.referees.index', compact('referees')); // Pass the referees to the view
+    // }
     public function index()
     {
-        $referees = Referee::where('user_id', Auth::id())->get(); // Fetch referees associated with the authenticated user
-        return view('applicant.referees.index', compact('referees')); // Pass the referees to the view
+        // Fetch the referees for the logged-in user
+        $referees = Referee::where('user_id', auth()->id())->get();
+
+        return view('applicant.referees.index', compact('referees'));
     }
 
     // Show the form for creating a new referee

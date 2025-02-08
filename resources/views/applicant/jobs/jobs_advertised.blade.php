@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    <div class="container mt-2">
+    <div class="container-fluid mt-2">
         <div class="row mb-3">
             <!-- Back to Dashboard Button -->
             <div class="col-md-6">
@@ -41,6 +41,7 @@
                             <thead>
                                 <tr>
                                     <th>Job Title</th>
+                                    <th>Reference No</th>
                                     <th>Description</th>
                                     <th>Posted On</th>
                                     <th>Posted On</th>
@@ -50,8 +51,9 @@
                             <tbody>
                                 @foreach($jobs as $job)
                                     <tr>
-                                        <td>{{ $job->title }}</td>
-                                        <td>{{ Str::limit($job->description, 100) }}</td>
+                                        <td>{{ $job->title ?? '' }}</td>
+                                        <td> {{ $job->advert_no }} </td>
+                                        <td>{!! nl2br(e(str_replace('.', '.',   $job->description))) !!}</td>
                                         <td>{{ $job->created_at->format('Y-m-d') }}</td>
                                         <td>{{ $job->application_deadline->format('Y-m-d') }}</td>
                                         <td>

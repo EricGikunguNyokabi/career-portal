@@ -45,7 +45,7 @@
                         @forelse($applications as $index => $application)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $application->job->title }}</td>
+                                <td>{{ $application->job ? $application->job->title : 'Job not found' }}</td>
                                 <td>{{ $application->created_at->format('Y-m-d') }}</td>
                                 <td>{{ $application->status ?? 'Pending' }}</td>
                                 <td>

@@ -47,11 +47,7 @@ class EmploymentHistoryController extends Controller
     {
         $employmentHistory = PreviousEmployment::findOrFail($id);
 
-        if ($employmentHistory->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        return view('applicant.applicant_profile.edit_employment', compact('employmentHistory'));
+        return view('applicant.employment_history.edit', compact('employmentHistory'));
     }
 
     public function update(Request $request, $id)
@@ -65,10 +61,6 @@ class EmploymentHistoryController extends Controller
         ]);
 
         $employmentHistory = PreviousEmployment::findOrFail($id);
-
-        if ($employmentHistory->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
 
         $employmentHistory->update($request->all());
 

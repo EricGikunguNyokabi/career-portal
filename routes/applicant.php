@@ -27,10 +27,10 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     Route::get('/education-profile', [EducationController::class, 'index'])->name('applicant.education_profile');
     Route::get('/education-profile/create', [EducationController::class, 'create'])->name('applicant.education_create');
     Route::post('/education-profile', [EducationController::class, 'store'])->name('applicant.education_store');
-    Route::get('/education-profile/{education}/edit', [EducationController::class, 'edit'])->name('applicant.education_edit');
-    Route::put('/education-profile/{education}', [EducationController::class, 'update'])->name('applicant.education_update');
-    Route::delete('/education-profile/{education}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
-    
+    Route::get('/education-profile/{id}/edit', [EducationController::class, 'edit'])->name('applicant.education_edit');
+    Route::put('/education-profile/{id}', [EducationController::class, 'update'])->name('applicant.education_update');
+    Route::delete('/education-profile/{id}', [EducationController::class, 'destroy'])->name('applicant.education_destroy');
+
 
     // OTHER TRAININGS
     Route::get('/other-trainings', [OtherTrainingsController::class, 'index'])->name('applicant.other_trainings'); 

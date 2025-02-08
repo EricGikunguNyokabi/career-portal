@@ -182,11 +182,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="gender" class="form-label">Gender <span class="required">*</span></label>
-                            <select class="form-select" id="gender" name="gender" required>
+                            <select class="form-select form-control" id="gender" name="gender" required>
                                 <option value="">Click to Select</option>
-                                <option value="Female" {{ $user->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                 <option value="Male" {{ $user->gender == 'Male' ? 'selected' : '' }}>Male</option>
-                                <option value="Other" {{ $user->gender == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option value="Female" {{ $user->gender == 'Female' ? 'selected' : '' }}>Female</option>
                             </select>
                         </div>
                         <!-- Profile picture -->

@@ -53,34 +53,33 @@ class UserController extends Controller
 
     // Update the specified user in storage
     public function update(Request $request, $id)
-    {
-        \Log::info('Updating user with ID: ' . $id);
-        \Log::info('Request data: ', $request->all());
 
-        $validatedData = $request->validate([
+    {
+        $request->validate([
             'first_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8|confirmed',
-            'role' => 'required|string|in:applicant,hr_team,management,admin', // Ensure valid roles
+            'role' => 'required|string|in:applicant,hr_team,management,admin', 
         ]);
 
         $user = User::findOrFail($id);
-        $user->first_name = $validatedData['first_name'];
-        $user->middle_name = $validatedData['middle_name'] ?? null;
-        $user->last_name = $validatedData['last_name'];
-        $user->email = $validatedData['email'];
-
-        if ($request->filled('password')) {
-            $user->password = Hash::make($validatedData['password']); // Use Hash facade
-        }
-        
-        $user->role = $validatedData['role'];
-        $user->save();
-
+        $user -> update([
+            'first_name'=> $request['first_name'],
+            'middle_name'=> $request['middle_name'],
+            'last_name'=> $request['last_name'],
+            'email'=> $request['email'],
+            'role'=> $request['role'],
+        ]);
         return redirect()->route('admin.user_list')->with('success', 'User  updated successfully!');
     }
+
+        
+        
+    //     // $user->save();
+
+    //     return redirect()->route('admin.user_list')->with('success', 'User  updated successfully!');
+    // }
 
     // Remove the specified user from storage
     public function destroy($id)

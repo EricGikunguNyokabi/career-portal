@@ -71,12 +71,14 @@
                                     <td>{{ $employment->end_date ? \Carbon\Carbon::parse($employment->end_date)->format('d-m-Y') : 'Present' }}</td>
                                     <!-- Calculate total months of employment -->
                                     <td>{{ \Carbon\Carbon::parse($employment->start_date)->diffInMonths($employment->end_date ?? now()) }} months</td>
-                                    <td>{{ $employment->responsibilities }}</td>
+
+                                    <td>{!! nl2br(e(str_replace('.', '.',   $employment->responsibilities))) !!}</td>
+
                                     <td>
                                         <!-- Edit button with tooltip -->
-                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editEmploymentModal" data-id="{{ $employment->id }}" title="Edit Employment">
-                                            Edit
-                                        </button>
+                                        <a href="{{ route('applicant.employment_edit', $employment->id) }}" class="btn btn-warning">Edit</a>
+                                            
+                        
                                     </td>
                                     
                                     <td>
@@ -140,14 +142,6 @@
         </div>
     </div>
 
-    <!-- Edit Employment Modal -->
-    <div class="modal fade" id="editEmploymentModal" tabindex="-1" aria-labelledby="editEmploymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Content dynamically loaded using JS or AJAX -->
-            </div>
-        </div>
-    </div>
 
     <script>
         // JavaScript for handling 'Currently Employed' checkbox behavior
@@ -170,23 +164,6 @@
             $(this).find('form')[0].reset();
         });
 
-        // JavaScript for dynamically loading the edit modal with existing data
-        $('#editEmploymentModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var employmentId = button.data('id');
 
-            var modal = $(this);
-            // Make an AJAX request to fetch the employment details by ID
-            $.ajax({
-                url: '/employment/' + employmentId + '/edit',
-                method: 'GET',
-                success: function(data) {
-                    modal.find('.modal-content').html(data);
-                },
-                error: function() {
-                    alert('Failed to load data, please try again.');
-                }
-            });
-        });
     </script>
 @endsection

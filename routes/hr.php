@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HRController;
+use App\Http\Controllers\HR\HRController;
+use App\Http\Controllers\HR\ApplicantController;
 
 // HR routes
 Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
@@ -8,9 +9,9 @@ Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
     Route::get('/dashboard', [HRController::class, 'dashboard'])->name('hr.dashboard');
 
     // APPLICANT MANAGEMENT
-    Route::get('/applicant-list', [HRController::class, 'applicant_list'])->name('hr.applicant_list');
-    Route::get('/applicant/{id}', [HRController::class, 'view_applicant'])->name('hr.view_applicant');
-    Route::get('/applicant/filter', [HRController::class, 'filter_applicants'])->name('hr.filter_applicants');
+    Route::get('/applicant-list', [ApplicantController::class, 'index'])->name('hr.applicant_list');
+    Route::get('/applicant/{id}', [ApplicantController::class, 'index'])->name('hr.view_applicant');
+    Route::get('/applicant/filter', [ApplicantController::class, 'filter'])->name('hr.filter_applicants');
     
     // JOB POSTINGS
     Route::get('/job-postings', [HRController::class, 'job_postings'])->name('hr.job_postings');

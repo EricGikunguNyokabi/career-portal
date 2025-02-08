@@ -30,7 +30,7 @@ class OtherTrainingsController extends Controller
             'institution_name' => 'required|string|max:255',
             'course' => 'required|string|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
         OtherTraining::create($request->all()); // Create a new record using mass assignment
@@ -42,7 +42,7 @@ class OtherTrainingsController extends Controller
     public function edit($id)
     {
         $otherTraining = OtherTraining::findOrFail($id); // Find the record or fail
-        return view('applicant.other_trainings.edit', compact('otherTraining')); // Return the edit view
+        return view('applicant.other_training.edit', compact('otherTraining')); // Return the edit view
     }
 
     // Update the specified training record in storage
@@ -52,7 +52,7 @@ class OtherTrainingsController extends Controller
             'institution_name' => 'required|string|max:255',
             'course' => 'required|string|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
         $otherTraining = OtherTraining::findOrFail($id); // Find the record or fail

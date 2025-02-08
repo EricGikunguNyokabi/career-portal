@@ -44,12 +44,13 @@ class EducationController extends Controller
         return redirect()->route('applicant.education_profile')->with('success', 'Education record added successfully.');
     }
 
-    public function edit(Education $education)
+    public function edit($id)
     {
+        $education = Education::findOrFail($id);
         return view('applicant.education.edit', compact('education'));
     }
 
-    public function update(Request $request, Education $education)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'institution_name' => 'required|string|max:255',
@@ -57,9 +58,12 @@ class EducationController extends Controller
             'course' => 'required|string|max:255',
             'grade' => 'required|string|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
-
+    
+        $education = Education::findOrFail($id);
+            
+    
         $education->update([
             'institution_name' => $request->institution_name,
             'academic_level' => $request->academic_level,
@@ -72,8 +76,9 @@ class EducationController extends Controller
         return redirect()->route('applicant.education_profile')->with('success', 'Education record updated successfully.');
     }
 
-    public function destroy(Education $education)
+    public function destroy($id)
     {
+        $education = Education::findOrFail($id);
         $education->delete();
         return redirect()->route('applicant.education_profile')->with('success', 'Education record deleted successfully.');
     }

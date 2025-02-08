@@ -12,6 +12,8 @@ class JobApplicationController extends Controller
     // Display job application history
     public function applicationHistory()
     {
+        // $applications = JobApplication::with('job')->where('applicant_id', auth()->id())->get();
+        // $applications = JobApplication::with('job')->where('applicant_id', auth()->id())->get(); // Eager load the job relationship
         $applications = JobApplication::where('applicant_id', auth()->id())->get(); // Fetch applications for the logged-in applicant
         return view('applicant.jobs.application_history', compact('applications')); // Replace with your actual view name
     }

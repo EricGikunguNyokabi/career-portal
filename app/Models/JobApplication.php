@@ -12,6 +12,16 @@ class JobApplication extends Model
         'applicant_id',
         'job_id',
     ];
+
+    public function applicant()
+    {
+        return $this->belongsTo(User::class, 'applicant_id');
+    }
+
+    public function job()
+    {
+        return $this->belongsTo(JobPosting::class, 'job_id');
+    }
 }
 
 // // Mass Assignment Protection
