@@ -7,7 +7,7 @@
             <li class="nav-item">
                 <a href="{{ route('hr.dashboard') }}" class="nav-link link dashboard-link">
                     <i class="nav-icon fas fa-tachometer-alt fa-2x"></i>
-                    <p>Dashboard</p>
+                    <p> HR Dashboard</p>
                 </a>
             </li>
 
@@ -30,7 +30,12 @@
                     <p>Job Postings</p>
                 </a>
             </li>
-           
+            <li class="nav-item">
+                <a href="{{ route('hr.job_posting.create') }}" class="nav-link link create-job-posting-link">
+                    <i class="nav-icon fas fa-plus fa-2x"></i>
+                    <p>Create Job Posting</p>
+                </a>
+            </li>
 
         </ul>
     </nav>

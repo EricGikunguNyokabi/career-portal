@@ -61,10 +61,10 @@ class JobPostingController extends Controller
         return redirect()->route('hr.job_postings.index')->with('success', 'Job posting updated successfully.');
     }
 
-    public function destroy($id)
-    {
-        $jobPosting = JobPosting::findOrFail($id);
-        $jobPosting->delete(); // Delete job posting
-        return redirect()->route('hr.job_postings.index')->with('success', 'Job posting deleted successfully.');
-    }
+    // public function destroy($id)
+    // {
+    //     $jobPosting = JobPosting::findOrFail($id);
+    //     $jobPosting->delete(); // Delete job posting
+    //     return redirect()->route('hr.job_postings.index')->with('success', 'Job posting deleted successfully.');
+    // }
 }

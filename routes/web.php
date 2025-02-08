@@ -66,4 +66,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 require base_path('routes/applicant.php');
 require base_path('routes/hr.php');
 require base_path('routes/admin.php');
-require base_path('routes/mgt.php');
+require base_path('routes/management.php');

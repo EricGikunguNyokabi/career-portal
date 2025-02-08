@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a href="{{ route('applicant.dashboard') }}" class="nav-link link dashboard-link">
                         <i class="nav-icon fas fa-tachometer-alt fa-2x"></i>
-                        <p>Dashboard</p>
+                        <p>Applicant Dashboard</p>
                     </a>
                 </li>
 

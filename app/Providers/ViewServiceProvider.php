@@ -27,7 +27,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         // Define a global variable that will be available in all views
-        View::share('company_name', 'E-Recruitment Portal');
+        View::share('company_name', 'VTECH CAREER PORTAL');
     }
 }
 

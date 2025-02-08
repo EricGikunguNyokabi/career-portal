@@ -1,6 +1,5 @@
 @extends('layouts.layout')
 
-@section('title', 'VTECH Recruitment Portal')
 
 @section('main')
 <div class="container mt-5">

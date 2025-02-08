@@ -39,11 +39,6 @@
                 <td style="display: flex; align-items: center;">
                     <a href="{{ route('hr.job_posting.edit', $jobPosting->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     
-                    <form action="{{ route('hr.job_posting.delete', $jobPosting->id) }}" method="POST" style="margin-left: 5px;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this job posting?');">Delete</button>
-                    </form>
                 </td>
             </tr>
             @endforeach

@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Vtech Recruitment Portal, Jobs Portal.">
+    <meta name="description" content="$company_name, Jobs, Career Portal.">
     <title id="page-title">
-        @yield('title') {{ $company_name ?? 'VTECH RECRUITERS' }}
+        @yield('title') {{ $company_name  }}
     </title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -117,7 +117,7 @@
                                     <p>HR Dashboard</p>
                                 </a>
                             @elseif (Auth::user()->role === 'management') <!-- Check if user is management -->
-                                <a href="{{ route('management.dashboard') }}" class="nav-link">
+                                <a href="{{ route('mgt.dashboard') }}" class="nav-link">
                                     <i class="fas fa-tachometer-alt fa-2x nav-icon"></i>
                                     <p>Management Dashboard</p>
                                 </a>

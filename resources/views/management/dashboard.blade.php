@@ -14,28 +14,20 @@
         </div>
 
         <!-- Key Metrics -->
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card bg-info text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Applicants</h5>
-                        <h3 class="card-text">350</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
+        <div class="row row-cols-2 row-cols-md-2">
+            <div class="col">
                 <div class="card bg-success text-white mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Jobs Posted</h5>
-                        <h3 class="card-text">25</h3>
+                        <h3 class="card-text">{{ $jobPostings }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col">
                 <div class="card bg-danger text-white mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Applications Received</h5>
-                        <h3 class="card-text">1200</h3>
+                        <h3 class="card-text">{{ $applications }}</h3>
                     </div>
                 </div>
             </div>

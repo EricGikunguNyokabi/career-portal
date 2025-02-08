@@ -8,7 +8,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link link dashboard-link">
                     <i class="nav-icon fas fa-tachometer-alt fa-2x"></i>
-                    <p>Dashboard</p>
+                    <p>Admin Dashboard</p>
                 </a>
             </li>
 
