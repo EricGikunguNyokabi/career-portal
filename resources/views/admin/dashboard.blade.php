@@ -14,8 +14,8 @@
         </div>
 
         <!-- Key Metrics -->
-        <div class="row mb-4">
-            <div class="col-md-4">
+        <div class="row row-cols-4 row-cols-md-4 mb-4 text-uppercase">
+            <div class="col">
                 <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
                     <div class="card bg-success text-white mb-3">
                         <div class="card-body">
@@ -27,24 +27,57 @@
             </div>
 
 
-            <div class="col-md-4">
+            <div class="col">
                 <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-danger text-white mb-3">
+                    <div class="card bg-secondary text-white mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Applications Received</h5>
-                            <h3 class="card-text">  </h3>
+                            <h5 class="card-title">Total Registered Users</h5>
+                            <h3 class="card-text"> {{ $users }} </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-primary text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Registered Applicants</h5>
+                            <h3 class="card-text"> {{ $users }}   </h3>
                         </div>
                     </div>
                 </a>
             </div>
 
 
-            <div class="col-md-4">
+            <div class="col">
                 <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
                     <div class="card bg-info text-white mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Registered Applicants</h5>
-                            <h3 class="card-text">  </h3>
+                            <h5 class="card-title">Human Resource </h5>
+                            <h3 class="card-text"> {{ $users }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title ">Board Of Management</h5>
+                            <h3 class="card-text"> {{ $users }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Admins</h5>
+                            <h3 class="card-text"> {{ $users }}   </h3>
                         </div>
                     </div>
                 </a>
