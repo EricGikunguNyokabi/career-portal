@@ -21,10 +21,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Available Vacancies</h5>
                         <h1 class="text-4xl font-bold"> <!-- Use Tailwind classes for size and font weight -->
-                            <span class="badge rounded-pill bg-primary">{{ $jobPostingCount ??  '' }}</span> <!-- Total number of vacancies -->
+                            <span class="badge rounded-pill bg-primary">{{ $jobPostingCount ??  '0' }}</span> <!-- Total number of vacancies -->
                         </h1>
                         <p class="card-text">Explore the latest job openings available in our portal.</p>
-                        <a href="" class="btn btn-primary">View Vacancies</a>
+                        <a href="{{ route('applicant.job_posting') }}" class="btn btn-primary">View Our Job Posting</a>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <h5 class="card-title">My Profile</h5>
                         <p class="card-text">Update your personal details and resume.</p>
-                        <a href="" class="btn btn-secondary">View Profile</a>
+                        <a href="{{ route('applicant.profile') }}" class="btn btn-secondary">View Profile</a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Application History</h5>
                         <p class="card-text">Review your past job applications and their statuses.</p>
-                        <a href="" class="btn btn-secondary">View History</a>
+                        <a href="{{ route('applicant.application_history') }}" class="btn btn-secondary">View History</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Referees</h5>
                         <p class="card-text">Manage your list of referees for job applications.</p>
-                        <a href="" class="btn btn-secondary">View Referees</a>
+                        <a href="{{ route('applicant.profile') }}" class="btn btn-secondary">View Referees</a>
                     </div>
                 </div>
             </div>

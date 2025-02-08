@@ -15,7 +15,7 @@
 
                 <li class="nav-header">MY PROFILE</li>
                 <li class="nav-item">
-                    <a href="{{ route('applicant.personal_profile') }}" class="nav-link link overview-link">
+                    <a href="{{ route('applicant.profile') }}" class="nav-link link overview-link">
                         <i class="far fa-user-circle fa-2x nav-icon"></i>
                         <p>Personal Details</p>
                     </a>

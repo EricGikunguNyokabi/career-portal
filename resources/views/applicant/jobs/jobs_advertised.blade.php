@@ -40,6 +40,7 @@
                         <table class="table table-hover table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <td>No.</td>
                                     <th>Job Title</th>
                                     <th>Reference No</th>
                                     <th>Description</th>
@@ -51,6 +52,7 @@
                             <tbody>
                                 @foreach($jobs as $job)
                                     <tr>
+                                        <td>{{ $loop->iteration }} </td>
                                         <td>{{ $job->title ?? '' }}</td>
                                         <td> {{ $job->advert_no }} </td>
                                         <td>{!! nl2br(e(str_replace('.', '.',   $job->description))) !!}</td>

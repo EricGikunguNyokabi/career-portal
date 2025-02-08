@@ -6,7 +6,7 @@
     <!-- Company Information -->
     <div class="row mb-4">
         <div class="col-12 text-center">
-            <h1 class="display-4 text-bold">Welcome to VTECH Recruitment Portal</h1>
+            <h1 class="display-4 text-bold"> VTECH CAREER PORTAL </h1>
             <p class="lead">At VTECH, we strive to provide an efficient and user-friendly recruitment experience. Our portal connects talented individuals with exciting job opportunities in various sectors. We are committed to upholding the highest standards of data privacy and ensuring a smooth application process for all users.</p>
         </div>
     </div>

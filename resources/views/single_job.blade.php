@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', isset($singleJob) ? $singleJob->title : 'VTECH Recruitment Portal')
+@section('title', isset($singleJob) ? $singleJob->title : $company_name)
 
 @section('main')
     <div class="container">

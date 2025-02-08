@@ -115,19 +115,7 @@
         </div>
     </div>
 
-    <!-- Profile Completion Progress Bar -->
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h5>Profile Completion</h5>
-        </div>
-        <div class="card-body">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: {{ $profileCompletion }}%;" aria-valuenow="{{ $profileCompletion }}" aria-valuemin="0" aria-valuemax="100">
-                    {{ number_format($profileCompletion, 2) }}%
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -138,7 +126,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('applicant.updateProfile') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('applicant.profile.update' ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

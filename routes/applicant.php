@@ -3,14 +3,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Applicant\ApplicantController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Applicant\ProfileController;
 use App\Http\Controllers\Applicant\EducationController;
 use App\Http\Controllers\Applicant\OtherTrainingsController;
 use App\Http\Controllers\Applicant\EmploymentHistoryController;
 use App\Http\Controllers\Applicant\RefereesController;
 use App\Http\Controllers\Applicant\FileUploadController;
 use App\Http\Controllers\Applicant\JobApplicationController;
-use App\Models\Education;
 
 
 // Applicant routes
@@ -19,8 +18,8 @@ Route::prefix('applicant')->middleware(['auth', 'role:applicant'])->group(functi
     Route::get('/dashboard', [ApplicantController::class, 'dashboard'])->name('applicant.dashboard');
 
     // PERSONAL PROFILE
-    Route::get('/personal-profile', [ApplicantController::class, 'personalProfile'])->name('applicant.personal_profile');
-    Route::put('/personal-profile', [ProfileController::class, 'updateProfile'])->name('applicant.updateProfile');
+    Route::get('/personal-profile', [ProfileController::class, 'index'])->name('applicant.profile');
+    Route::put('/personal-profile', [ProfileController::class, 'update'])->name('applicant.profile.update');
    
     
     // EDUCATION
