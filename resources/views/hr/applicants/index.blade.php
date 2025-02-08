@@ -33,7 +33,9 @@
                         <td>{{ $application->job->title }}</td>
                         <td>{{ $application->created_at->format('d-m-Y') }}</td>
                         <td>
-                            <a href="" class="btn btn-info btn-sm">View</a>
+                        <a href="{{ route('hr.applicants.view', $application->id ) }}" class="btn btn-info btn-sm">
+                            View 
+                        </a>
                         </td>
                     </tr>
                 @endforeach
