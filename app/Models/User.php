@@ -99,7 +99,13 @@ class User extends Authenticatable
 
     public function employmentHistory()
     {
-        return $this->hasMany(EmploymentHistory::class);
+        return $this->hasMany(PreviousEmployment::class);
     }
+
+    public function education()
+    {
+        return $this->hasMany(Education::class);
+    }
+
 
 }

@@ -31,6 +31,11 @@ class Education extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // public function educations()
+    // {
+    //     return $this->hasMany(Education::class, 'user_id'); 
+    // }
+
 
     
 }

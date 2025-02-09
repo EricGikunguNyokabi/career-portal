@@ -14,8 +14,8 @@ class JobApplication extends Model
         'education_id',
         'other_training_id',
         'experience_id',
-        'referee_id', 
-        'document_id', 
+        'referees_id',
+        'document_id',
     ];
 
     public function applicant()
@@ -28,25 +28,27 @@ class JobApplication extends Model
         return $this->belongsTo(JobPosting::class, 'job_id');
     }
 
-    public function education() {
-        return $this->belongsTo(Education::class, 'education_id');
+    public function education()
+    {
+        return $this->hasMany(Education::class, 'user_id', 'id');
     }
+
     
-    public function trainings() {
-        return $this->belongsTo(OtherTraining::class, 'other_training_id');
-    }
+    // public function trainings() {
+    //     return $this->applicant->hasMany(OtherTraining::class, 'user_id', 'applicant_id');
+    // }
     
-    public function work_experiences() {
-        return $this->belongsTo(PreviousEmployment::class, 'experience_id');
-    }
+    // public function work_experiences() {
+    //     return $this->applicant->hasMany(PreviousEmployment::class, 'user_id', 'applicant_id');
+    // }
     
-    public function referee() {
-        return $this->belongsTo(Referee::class, 'referees_id');
-    }
+    // public function referees() {
+    //     return $this->applicant->hasMany(Referee::class, 'user_id', 'applicant_id');
+    // }
     
-    public function document() {
-        return $this->belongsTo(Documents::class, 'documents_id');
-    }
+    // public function documents() {
+    //     return $this->applicant->hasMany(Documents::class, 'user_id', 'applicant_id');
+    // }
     
     
 }

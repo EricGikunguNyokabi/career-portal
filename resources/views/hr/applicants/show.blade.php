@@ -13,7 +13,7 @@
         <div class="card shadow-sm p-4">
             
             <!-- Personal Information -->
-            <h4 class="mb-3">Personal Information</h4>
+            <h4 class="mb-3">PERSONAL INFORMATION</h4>
             <table class="table table-bordered">
                 <tr>
                     <th>Name</th>
@@ -50,25 +50,67 @@
             </table>
 
             <!-- Education Background -->
-<h4 class="mt-4">Education Background</h4>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Degree</th>
-            <th>Institution</th>
-            <th>Year of Completion</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($application->applicant->education as $education)
-            <tr>
-                <td>{{ $education->academic_level }}</td>
-                <td>{{ $education->institution_name }}</td>
-                <td>{{ $education->end_date }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+
+            <h4>EDUCATION HISTORY</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Academic Level</th>
+                        <th>Course</th>
+                        <th>Award</th>
+                        <th>Institution Name</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->education->isNotEmpty())
+                        @foreach($application->applicant->education as $edu)
+                            <tr>
+                                <td>{{ $edu->academic_level }}</td>
+                                <td>{{ $edu->course }}</td>
+                                <td>{{ $edu->grade }}</td>
+                                <td>{{ $edu->institution_name }}</td>
+                                <td>{{ $edu->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center">No education records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
+            <h4>OTHER TRAININGS</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course</th>
+                        <th>Award</th>
+                        <th>Institution Name</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->education->isNotEmpty())
+                        @foreach($application->applicant->education as $edu)
+                            <tr>
+                                <td>{{ $edu->course }}</td>
+                                <td>{{ $edu->grade }}</td>
+                                <td>{{ $edu->institution_name }}</td>
+                                <td>{{ $edu->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center">No education records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
 
 
            

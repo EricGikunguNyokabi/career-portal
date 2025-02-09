@@ -22,11 +22,11 @@ class ApplicantController extends Controller
         $application = JobApplication::with([
             'applicant', 
             'job',
-            'education',
-            'other_trainings',
-            'work_experiences',
-            'referees',
-            'documents',
+            'applicant.education',
+            // 'other_trainings',
+            // 'work_experiences',
+            // 'referees',
+            // 'documents',
             ])->findOrFail($id);
         
         return view("hr.applicants.show", compact('application'));
