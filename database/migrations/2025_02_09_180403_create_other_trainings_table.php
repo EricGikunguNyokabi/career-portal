@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('other_trainings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('institution_name'); 
             $table->string('course'); 
             $table->date('start_date'); 
             $table->date('end_date')->nullable(); 
             $table->timestamps();
+
+            // Foreign key relation
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,3 +33,4 @@ return new class extends Migration
         Schema::dropIfExists('other_trainings');
     }
 };
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Applicant;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -32,7 +33,7 @@ class ProfileController extends Controller
             'address' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'gender' => 'required|string|in:Male,Female',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max size 2MB
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Max size 2MB
         ]);
 
         // Get the authenticated user
@@ -61,9 +62,21 @@ class ProfileController extends Controller
             // Create a unique filename
             $imageName = time() . '_' . $user->id . '.' . $image->getClientOriginalExtension();
             // Store the new profile picture in the public disk
-            $path = $image->storeAs('profile_pictures', $imageName, 'public');
+            // $path = $image->storeAs('/images/profile_pictures', $imageName, 'public');
+            $destinationPath = public_path('images/profile_pictures');
             // Save the image path to the database
-            $user->profile_picture = $path; // This will be 'profile_pictures/unique_filename.jpg'
+            // $user->profile_picture = $path; // This will be 'profile_pictures/unique_filename.jpg'
+            // Ensure the directory exists
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true);
+            }
+
+            // Move the uploaded file to the public directory
+            $image->move($destinationPath, $imageName);
+            
+            // Save the public image path in the database
+            $user->profile_picture = 'images/profile_pictures/' . $imageName;
+            $user->save();
         }
 
         // Save the updated user information

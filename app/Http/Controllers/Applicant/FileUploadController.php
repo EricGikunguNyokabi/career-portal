@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Documents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class FileUploadController extends Controller
 {
     // Display the file upload page
     public function index()
     {
-        $documents = Documents::all(); // Fetch all uploaded documents
+        $documents = Documents::where('user_id',Auth::id())->get();
         return view('applicant.file_uploads.file_uploads', compact('documents')); // Replace with your actual view name
     }
 
@@ -29,8 +30,8 @@ class FileUploadController extends Controller
 
         // Save the document information to the database
         Documents::create([
+            'user_id' => Auth::id(),
             'file_name' => $fileName,
-            // Add other fields if necessary
         ]);
 
         return redirect()->route('applicant.files_upload')->with('status', 'Document uploaded successfully!');

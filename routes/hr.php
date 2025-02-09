@@ -14,7 +14,7 @@ Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
     Route::get('/applicants/{id}', [ApplicantController::class, 'show'])->name('hr.applicants.view'); 
 
 
-    Route::get('/applicant/filter', [ApplicantController::class, 'filter'])->name('hr.filter_applicants');
+    // Route::get('/applicant/filter', [ApplicantController::class, 'filter'])->name('hr.filter_applicants');
     
     // JOB POSTINGS
     Route::get('/job-postings', [JobPostingController::class, 'index'])->name('hr.job_postings.index');

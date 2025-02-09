@@ -9,6 +9,7 @@ class Documents extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'document_name',
         'file_name',
     ];

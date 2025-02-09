@@ -28,6 +28,8 @@ return new class extends Migration
             $table->enum('role', ['applicant', 'hr_team', 'management', 'admin']);
             $table->rememberToken();
             $table->timestamps();
+
+            // $table->string('profile_picture')->nullable()->after('email');
         });
     }
 

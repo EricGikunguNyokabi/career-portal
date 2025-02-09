@@ -11,6 +11,8 @@
         <h2 class="text-center mb-4">Applicant Details</h2>
 
         <div class="card shadow-sm p-4">
+            
+            <!-- Personal Information -->
             <h4 class="mb-3">Personal Information</h4>
             <table class="table table-bordered">
                 <tr>
@@ -37,11 +39,47 @@
                     <th>Gender</th>
                     <td>{{ ucfirst($application->applicant->gender) }}</td>
                 </tr>
+                <tr>
+                    <th>Profile Picture</th>
+                    <td>
+                        <img src="{{ asset($application->applicant->profile_picture) }}" 
+                            alt="Profile Picture" 
+                            class="img-thumbnail" width="150">
+                    </td>
+                </tr>
             </table>
+
+            <!-- Education Background -->
+<h4 class="mt-4">Education Background</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Degree</th>
+            <th>Institution</th>
+            <th>Year of Completion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($application->applicant->education as $education)
+            <tr>
+                <td>{{ $education->academic_level }}</td>
+                <td>{{ $education->institution_name }}</td>
+                <td>{{ $education->end_date }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
+
+           
+
+
+
+
         </div>
 
         <div class="card shadow-sm p-4 mt-4">
-            <h4 class="mb-3">Job Applied</h4>
+            <h4 class="mb-3">Job Applied For</h4>
             <table class="table table-bordered">
                 <tr>
                     <th>Job Title</th>

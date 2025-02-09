@@ -19,7 +19,15 @@ class ApplicantController extends Controller
     public function show($id)
     {
         // Show applicant details
-        $application = JobApplication::with(['applicant', 'job'])->findOrFail($id);
+        $application = JobApplication::with([
+            'applicant', 
+            'job',
+            'education',
+            'other_trainings',
+            'work_experiences',
+            'referees',
+            'documents',
+            ])->findOrFail($id);
         
         return view("hr.applicants.show", compact('application'));
     }

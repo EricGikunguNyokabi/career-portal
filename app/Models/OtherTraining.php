@@ -9,6 +9,7 @@ class OtherTraining extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'institution_name',
         'course',
         'start_date',

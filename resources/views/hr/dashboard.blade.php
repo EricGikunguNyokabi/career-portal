@@ -16,20 +16,25 @@
         <!-- Key Metrics -->
         <div class="row row-cols-2 row-cols-md-2">
             <div class="col">
-                <div class="card bg-success text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Jobs Posted</h5>
-                        <h3 class="card-text">{{ $jobPostings }}</h3>
+                <a href="{{ route('hr.job_postings.index')}}">
+                    <div class="card bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Jobs Posted</h5>
+                            <h3 class="card-text">{{ $jobPostings }}</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="card bg-danger text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Applications Received</h5>
-                        <h3 class="card-text">{{ $applications }}</h3>
+                <a href="{{ route('hr.applicants.index')}}">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Applications Received</h5>
+                            <h3 class="card-text">{{ $applications }}</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
+                
             </div>
         </div>
 

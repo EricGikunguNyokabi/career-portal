@@ -129,36 +129,47 @@
                     <form action="{{ route('applicant.profile.update' ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="mb-3">
-                            <label for="first_name" class="form-label">First Name <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $user->first_name }}" required>
+
+                        <!-- row -->
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3">
+                            <div class="col mb-3">
+                                <label for="first_name" class="form-label">First Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $user->first_name }}" required>
+                            </div>
+                            <div class="col mb-3">
+                                <label for="middle_name" class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{ $user->middle_name }}">
+                            </div>
+                            <div class="col mb-3">
+                                <label for="last_name" class="form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="middle_name" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{ $user->middle_name }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="last_name" class="form-label">Last Name <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}" required>
-                        </div>
+
+                        
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address <span class="required">*</span></label>
                             <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Phone Number <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="alternative_number" class="form-label">Alternative Number</label>
-                            <input type="text" class="form-control" id="alternative_number" name="alternative_number" value="{{ $user->alternative_number }}">
+
+                        <!-- row -->
+                        <div class="row row-cols-2 row-cols-md-3">
+                            <div class="col mb-3">
+                                <label for="phone_number" class="form-label">Phone Number <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
+                            </div>
+                            
+                            <div class="col mb-3">
+                                <label for="alternative_number" class="form-label">Other Phone</label>
+                                <input type="text" class="form-control" id="alternative_number" name="alternative_number" value="{{ $user->alternative_number }}">
+                            </div>
+                            <div class="col mb-3">
+                                <label for="emergency_number" class="form-label">Emergency Number</label>
+                                <input type="text" class="form-control" id="emergency_number" name="emergency_number" value="{{ $user->emergency_number }}">
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="emergency_number" class="form-label">Emergency Number</label>
-                            <input type="text" class="form-control" id="emergency_number" name="emergency_number" value="{{ $user->emergency_number }}">
-                        </div>
+                        
 
                         <div class="mb-3">
                             <label for="address" class="form-label">Address <span class="required">*</span></label>

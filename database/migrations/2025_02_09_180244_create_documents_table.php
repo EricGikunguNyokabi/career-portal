@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('document_type')->nullable();
             $table->string('file_name');
             $table->timestamps();
+
+            // Foreign key relation
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

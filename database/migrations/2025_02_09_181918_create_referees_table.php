@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('referees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->unsignedBigInteger('user_id'); 
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('relationship');
             $table->timestamps();
+
+            // Foreign key relation
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,3 +33,4 @@ return new class extends Migration
         Schema::dropIfExists('referees');
     }
 };
+

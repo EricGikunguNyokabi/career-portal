@@ -36,14 +36,21 @@ class JobApplicationController extends Controller
     public function apply(Request $request, $id)
     {
         $request->validate([
-            // Add validation rules as necessary
+            'education_id' => 'nullable|exists:educations,id',
+            'other_training_id' => 'nullable|exists:other_trainings,id',
+            'experience_id' => 'nullable|exists:previous_employments,id',
+            'referee_id' => 'nullable|exists:referees,id',
+            'document_id' => 'nullable|exists:documents,id',
         ]);
 
-        // Create a new job application
         JobApplication::create([
             'applicant_id' => auth()->id(),
             'job_id' => $id,
-            // Add other fields as necessary
+            'education_id' => $request->education_id,
+            'other_training_id' => $request->other_training_id,
+            'experience_id' => $request->experience_id,
+            'referee_id' => $request->referee_id,
+            'document_id' => $request->document_id,
         ]);
 
         return redirect()->route('applicant.application_history')->with('status', 'Application submitted successfully!');

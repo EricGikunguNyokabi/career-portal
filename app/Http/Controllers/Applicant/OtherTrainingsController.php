@@ -13,7 +13,7 @@ class OtherTrainingsController extends Controller
     // Display a listing of the other trainings
     public function index()
     {
-        $otherTrainings = OtherTraining::all(); // Fetch all other training records
+        $otherTrainings = OtherTraining::where('user_id', Auth::id())->get();
         return view('applicant.other_training.index', compact('otherTrainings')); // Pass the records to the view
     }
 
@@ -33,7 +33,13 @@ class OtherTrainingsController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
-        OtherTraining::create($request->all()); // Create a new record using mass assignment
+        OtherTraining::create([
+            'user_id' => Auth::id(),
+            'institution_name' => $request->institution_name,
+            'course' => $request->course,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]); 
 
         return redirect()->route('applicant.other_trainings')->with('success', 'Other training added successfully.');
     }
