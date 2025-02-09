@@ -5,6 +5,8 @@ namespace App\Http\Controllers\HR;
 use App\Http\Controllers\Controller;
 use App\Models\JobApplication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+    use Symfony\Component\HttpFoundation\Response;
 
 class ApplicantController extends Controller
 {
@@ -31,6 +33,22 @@ class ApplicantController extends Controller
         
         return view("hr.applicants.show", compact('application'));
     }
+
+    
+
+    public function view($file_name)
+    {
+        $filePath = 'documents/' . $file_name; // Ensure your files are stored in 'storage/app/public/documents/'
+        
+        if (!Storage::disk('public')->exists($filePath)) {
+            abort(404, 'Document not found.');
+        }
+
+        return response()->file(storage_path('app/public/' . $filePath), [
+            'Content-Disposition' => 'inline', // Ensures the file is displayed in the browser
+        ]);
+    }
+
 
     public function destroy($id)
     {

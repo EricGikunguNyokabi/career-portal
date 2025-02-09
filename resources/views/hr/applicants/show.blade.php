@@ -182,8 +182,9 @@
                     <tr>
                         <th></th>
                         <th>Document Type</th>
-                        <th>Action</th>
+                        
                         <th>File Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -193,7 +194,11 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $document->document_type }}</td>
                                 <td>{{ $document->file_name }}</td>
-                               <td></td>
+                               <td>
+                                    <a href="{{ route('hr.applicants.document.view', ['id' => $document->file_name]) }}" class="btn btn-info btn-sm" target="_blank">
+                                            View Document
+                                    </a>
+                               </td>
                             </tr>
                         @endforeach
                     @else
@@ -202,7 +207,7 @@
                         </tr>
                     @endif
                 </tbody>
-            </table></tr>
+            </table>
 
 
            
