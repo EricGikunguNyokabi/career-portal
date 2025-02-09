@@ -108,4 +108,21 @@ class User extends Authenticatable
     }
 
 
+    public function trainings() {
+        return $this->hasMany(OtherTraining::class);
+    }
+    
+    public function work_experiences() {
+        return $this->hasMany(PreviousEmployment::class);
+    }
+    
+    public function referees() {
+        return $this->hasMany(Referee::class);
+    }
+    
+    public function documents() {
+        return $this->hasMany(Documents::class);
+    }
+
+
 }

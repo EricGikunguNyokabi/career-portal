@@ -34,21 +34,21 @@ class JobApplication extends Model
     }
 
     
-    // public function trainings() {
-    //     return $this->applicant->hasMany(OtherTraining::class, 'user_id', 'applicant_id');
-    // }
+    public function trainings() {
+        return $this->hasMany(OtherTraining::class, 'user_id', 'id');
+    }
     
-    // public function work_experiences() {
-    //     return $this->applicant->hasMany(PreviousEmployment::class, 'user_id', 'applicant_id');
-    // }
+    public function work_experiences() {
+        return $this->hasMany(PreviousEmployment::class, 'user_id', 'id');
+    }
     
-    // public function referees() {
-    //     return $this->applicant->hasMany(Referee::class, 'user_id', 'applicant_id');
-    // }
+    public function referees() {
+        return $this->hasMany(Referee::class, 'user_id', 'id');
+    }
     
-    // public function documents() {
-    //     return $this->applicant->hasMany(Documents::class, 'user_id', 'applicant_id');
-    // }
+    public function documents() {
+        return $this->hasMany(Documents::class, 'user_id', 'id');
+    }
     
     
 }

@@ -23,10 +23,10 @@ class ApplicantController extends Controller
             'applicant', 
             'job',
             'applicant.education',
-            // 'other_trainings',
-            // 'work_experiences',
-            // 'referees',
-            // 'documents',
+            'applicant.trainings',
+            'applicant.work_experiences',
+            'applicant.referees',
+            'applicant.documents',
             ])->findOrFail($id);
         
         return view("hr.applicants.show", compact('application'));

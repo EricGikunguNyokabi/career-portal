@@ -55,6 +55,7 @@
             <table class="table table-bordered">
                 <thead class="table-dark">
                     <tr>
+                        <th></th>
                         <th>Academic Level</th>
                         <th>Course</th>
                         <th>Award</th>
@@ -66,6 +67,7 @@
                     @if($application->applicant->education->isNotEmpty())
                         @foreach($application->applicant->education as $edu)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $edu->academic_level }}</td>
                                 <td>{{ $edu->course }}</td>
                                 <td>{{ $edu->grade }}</td>
@@ -86,6 +88,7 @@
             <table class="table table-bordered">
                 <thead class="table-dark">
                     <tr>
+                        <th></th>
                         <th>Course</th>
                         <th>Award</th>
                         <th>Institution Name</th>
@@ -93,22 +96,116 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($application->applicant->education->isNotEmpty())
-                        @foreach($application->applicant->education as $edu)
+                    @if($application->applicant->trainings->isNotEmpty())
+                        @foreach($application->applicant->trainings as $training)
                             <tr>
-                                <td>{{ $edu->course }}</td>
-                                <td>{{ $edu->grade }}</td>
-                                <td>{{ $edu->institution_name }}</td>
-                                <td>{{ $edu->end_date }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $training->course }}</td>
+                                <td>{{ $training->grade }}</td>
+                                <td>{{ $training->institution_name }}</td>
+                                <td>{{ $training->end_date }}</td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="3" class="text-center">No education records found</td>
+                            <td colspan="4" class="text-center">No training records found</td>
                         </tr>
                     @endif
                 </tbody>
             </table>
+
+            <h4>WORK EXPERIENCE</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Roles</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->work_experiences->isNotEmpty())
+                        @foreach($application->applicant->work_experiences as $experience)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $experience->job_title }}</td>
+                                <td>{{ $experience->company_name }}</td>
+                                <td>{{ $experience->responsibilities }}</td>
+                                <td>{{ $experience->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No work history records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+            <h4>REFEREES</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Relationship</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->referees->isNotEmpty())
+                        @foreach($application->applicant->referees as $referee)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $referee->name }}</td>
+                                <td>{{ $referee->relationship }}</td>
+                                <td>{{ $referee->email }}</td>
+                                <td>{{ $referee->phone }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No referee records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
+            <h4>UPLOADED DOCUMENTS</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Document Type</th>
+                        <th>Action</th>
+                        <th>File Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->documents->isNotEmpty())
+                        @foreach($application->applicant->documents as $document)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $document->document_type }}</td>
+                                <td>{{ $document->file_name }}</td>
+                               <td></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No document record found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table></tr>
+
+
+           
 
 
 
