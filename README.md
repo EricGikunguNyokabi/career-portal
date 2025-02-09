@@ -1,6 +1,6 @@
-# Career Portal 🚀
+# CAREER PORTAL 
 
-Welcome to the **Career Portal**, a web application designed to streamline job applications and career management for applicants and HR teams. This system allows applicants to create profiles, upload qualifications, browse job listings, and apply for positions.
+Welcome to my **Career Portal**, a web application designed to streamline job applications and career management for applicants and HR teams. This system allows applicants to create profiles, upload qualifications, browse job listings, and apply for positions.
 
 ## **Screenshots & Features**
 
