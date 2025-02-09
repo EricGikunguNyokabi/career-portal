@@ -75,6 +75,38 @@ Welcome to my **Career Portal**, a web application designed to streamline job ap
 - HR Can get a simplified view of Total no of applicants, Jobs Posted, Total Applicants required and Job posting per category.
 ---
 
+### **2. All Applicants List**
+![CAREER PORTAL](public/images/readmegit/applicant-list.png)
+
+---
+
+### **3. Single Applicants View**
+![CAREER PORTAL](public/images/readmegit/single-applicants-details.png)
+
+---
+
+### **4. View / Edit / Create Job Posting**
+![CAREER PORTAL](public/images/readmegit/view-job-postings.png)
+
+---
+
+### **5. Create Job Posting**
+![CAREER PORTAL](public/images/readmegit/create-job-posting.png)
+
+---
+
+### **6. Edit Job Posting**
+![CAREER PORTAL](public/images/readmegit/edit-job-posting.png)
+
+---
+
+
+
+
+
+
+
+
 ---
 ## **Management Board Layout => Screenshots & Features**
 ---
