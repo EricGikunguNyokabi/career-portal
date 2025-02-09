@@ -3,7 +3,7 @@
 Welcome to my **Career Portal**, a web application designed to streamline job applications and career management for applicants and HR teams. This system allows applicants to create profiles, upload qualifications, browse job listings, and apply for positions.
 
 ---
-## **Applicant Screenshots & Features**
+## **Applicant's Layout => Screenshots & Features**
 ---
 
 ### **1. Landing Page (Home)**
@@ -67,14 +67,19 @@ Welcome to my **Career Portal**, a web application designed to streamline job ap
 ---
 
 ---
-## **Human Resource (HR) Screenshots & Features**
+## **Human Resource (HR) Layout => Screenshots & Features**
+---
+### **1. HR Dashboard**
+![CAREER PORTAL](public/images/readmegit/hr-dashboard.png)
+- This is the HR-Dashboard of the Career Portal.
+- HR Can get a simplified view of Total no of applicants, Jobs Posted, Total Applicants required and Job posting per category.
 ---
 
 ---
-## **Management Board Screenshots & Features**
+## **Management Board Layout => Screenshots & Features**
 ---
 
 
 ---
-## **Admin Screenshots & Features**
+## **Admin Screenshots Layout => & Features**
 ---

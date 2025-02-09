@@ -45,19 +45,33 @@ class JobPostingController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Debugging: Check incoming request data
+        // dd($request->all());
+    
         $request->validate([
             'title' => 'required|string|max:255',
             'position_needed' => 'required|integer',
-            'job_grade' => 'nullable|string|max:10',
-            'advert_no' => 'nullable|string|max:10',
+            'job_grade' => 'nullable|string|max:15',
+            'advert_no' => 'nullable|string|max:15',
             'application_deadline' => 'required|date', 
             'description' => 'nullable|string|max:2000',
         ]);
-
+    
         $jobPosting = JobPosting::findOrFail($id);
-        $jobPosting->update($request->all()); // Update job posting
-        // dd($request->all());
+    
+        // Debugging: Check the job posting before update
+        // dd($jobPosting);
+    
+        try {
+            $jobPosting->update($request->all());
+        } catch (\Exception $e) 
+        {
+            // Log the error message
+            \Log::error('Update failed: ' . $e->getMessage());
+            return redirect()->route('hr.job_postings.index')->with('error', 'Job posting update failed: ' . $e->getMessage());
+        }
 
+    
         return redirect()->route('hr.job_postings.index')->with('success', 'Job posting updated successfully.');
     }
 

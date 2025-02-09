@@ -53,6 +53,7 @@ class JobPostingController extends Controller
             'advert_no' => 'nullable|string|max:10',
             'application_deadline' => 'required|date', 
             'description' => 'nullable|string|max:2000',
+
         ]);
 
         $jobPosting = JobPosting::findOrFail($id);

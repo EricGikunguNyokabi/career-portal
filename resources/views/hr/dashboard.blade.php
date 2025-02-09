@@ -5,7 +5,7 @@
 @endsection 
 
 @section('main')
-    <div class="container-fluid mt-3">
+    <div class="container mt-3">
         <!-- Dashboard Header -->
         <div class="row mb-3">
             <div class="col-md-12">
@@ -14,10 +14,10 @@
         </div>
 
         <!-- Key Metrics -->
-        <div class="row row-cols-2 row-cols-md-2">
+        <div class="row row-cols-3 row-cols-md-3">
             <div class="col">
                 <a href="{{ route('hr.job_postings.index')}}">
-                    <div class="card bg-success text-white mb-3">
+                    <div class="card bg-info text-white mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Jobs Posted</h5>
                             <h3 class="card-text">{{ $jobPostings }}</h3>
@@ -25,6 +25,19 @@
                     </div>
                 </a>
             </div>
+
+            <div class="col">
+                <a href="{{ route('hr.job_postings.index')}}">
+                    <div class="card bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Positions Required</h5>
+                            <h3 class="card-text">{{ $positionsRequired }}</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
             <div class="col">
                 <a href="{{ route('hr.applicants.index')}}">
                     <div class="card bg-danger text-white mb-3">
@@ -39,160 +52,117 @@
         </div>
 
         <!-- Charts and Graphs -->
-        <div class="row">
-            <!-- Applicants by Status -->
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5>Applicants by Status</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="applicantsStatusChart" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Job Postings by Category -->
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5>Job Postings by Category</h5>
+        <div class="row row-cols-1 row-cols-md-1">
+            <div class="col">
+                <div class="card mb-3 mt-3">
+                    <div class="card-header text-uppercase">
+                        <h5>No of Job Postings by Category</h5>
                     </div>
                     <div class="card-body">
-                        <canvas id="jobPostingsCategoryChart" height="300"></canvas>
+                        <canvas id="jobPostingsChart" height="150"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Summary and Interpretation -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5>Summary</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6><strong>Total Applications:</strong></h6>
-                                <p>1200</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h6><strong>Total Job Postings:</strong></h6>
-                                <p>25</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6><strong>Applicants by Status:</strong></h6>
-                                <p>Pending: 50%</p>
-                                <p>Reviewed: 30%</p>
-                                <p>Interviewed: 15%</p>
-                                <p>Hired: 5%</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h6><strong>Job Postings by Category:</strong></h6>
-                                <p>IT: 10</p>
-                                <p>HR: 5</p>
-                                <p>Finance: 4</p>
-                                <p>Marketing: 6</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5>Interpretation</h5>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Applicants by Status:</strong> The majority of applicants are currently in the 'Pending' stage. This may indicate that the review process is still ongoing or that more applicants need to be reviewed.</p>
-                        <p><strong>Job Postings by Category:</strong> The highest number of job postings is in the IT category. This suggests a focus on technology-related positions, which may align with current hiring needs or trends in the organization.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
+
 
     <!-- Chart.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Applicants by Status Chart
-        var ctx = document.getElementById('applicantsStatusChart').getContext('2d');
-        var applicantsStatusChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Pending', 'Reviewed', 'Interviewed', 'Hired'],
-                datasets: [{
-                    label: 'Applicants Status',
-                    data: [50, 30, 15, 5],
-                    backgroundColor: ['#f39c12', '#00c0ef', '#00a65a', '#dd4b39']
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                var dataset = tooltipItem.dataset;
-                                var dataIndex = tooltipItem.dataIndex;
-                                var value = dataset.data[dataIndex];
-                                var total = dataset.data.reduce((acc, val) => acc + val, 0);
-                                var percentage = ((value / total) * 100).toFixed(2);
-                                return tooltipItem.label + ': ' + value + ' (' + percentage + '%)';
-                            }
-                        }
-                    }
-                }
-            }
-        });
 
-        // Job Postings by Category Chart
-        var ctx2 = document.getElementById('jobPostingsCategoryChart').getContext('2d');
-        var jobPostingsCategoryChart = new Chart(ctx2, {
+
+<!-- // Job Postings by Category Chart -->
+<script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     var jobData = @json($jobCategories);
+        
+    //     var titles = jobData.map(item => item.title);
+    //     var positions = jobData.map(item => item.total_positions);
+
+    //     var ctx = document.getElementById('jobPostingsChart').getContext('2d');
+    //     new Chart(ctx, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: titles,
+    //             datasets: [{
+    //                 label: 'Positions Needed',
+    //                 data: positions,
+    //                 backgroundColor: '#007bff',
+    //                 borderColor: '#0056b3',
+    //                 borderWidth: 1
+    //             }]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     title: {
+    //                         display: true,
+    //                         text: 'Positions Needed'
+    //                     }
+    //                 },
+    //                 x: {
+    //                     title: {
+    //                         display: true,
+    //                         text: 'Job Categories'
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     });
+    // });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var jobData = @json($jobCategories);
+        
+        var titles = jobData.map(item => item.title);
+        var positions = jobData.map(item => item.total_positions);
+
+        // Generate random colors for each bar
+        var backgroundColors = titles.map(() => `hsl(${Math.random() * 360}, 70%, 60%)`);
+        var borderColors = titles.map(() => `hsl(${Math.random() * 360}, 70%, 40%)`);
+
+        var ctx = document.getElementById('jobPostingsChart').getContext('2d');
+        new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['IT', 'HR', 'Finance', 'Marketing'],
+                labels: titles,
                 datasets: [{
-                    // label: 'Job Postings by Category',
-                    data: [10, 5, 4, 6],
-                    backgroundColor: ['#007bff', '#00c0ef', '#00a65a', '#dd4b39']
+                    // label: 'Positions Needed',
+                    data: positions,
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors,
+                    borderWidth: 1
                 }]
             },
             options: {
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return tooltipItem.label + ': ' + tooltipItem.raw;
-                            }
-                        }
-                    }
-                },
+                responsive: true,
                 scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Positions Needed'
+                        }
+                    },
                     x: {
                         title: {
                             display: true,
-                            text: 'Categories'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Number of Postings'
+                            text: 'Job Categories'
                         }
                     }
                 }
             }
         });
-    </script>
+    });
+</script>
+
+
+
 @endsection

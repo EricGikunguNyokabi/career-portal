@@ -10,7 +10,7 @@
 @section('main')
 <div class="container mt-5">
     <h1 class="text-center">Edit Job Posting</h1>
-    <form action="{{ route('hr.job_posting.update', $jobPosting->id) }}" method="POST">
+    <form action="{{ route('hr.job_posting.update', ['id'=>$jobPosting->id]) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
