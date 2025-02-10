@@ -50,12 +50,23 @@ class ApplicantController extends Controller
     }
 
 
-    public function destroy($id)
+    public function updateStatus(Request $request, $id)
     {
-        // Delete the applicant application
         $application = JobApplication::findOrFail($id);
-        $application->delete();
-        
-        return redirect()->route('hr.applicants.index')->with('success', 'Application Deleted Successfully');
+        $application->status = $request->input('status');
+        $application->save();
+
+        return redirect()->back()->with('success', 'Application status updated successfully.');
     }
+
+
+
+    // public function destroy($id)
+    // {
+    //     // Delete the applicant application
+    //     $application = JobApplication::findOrFail($id);
+    //     $application->delete();
+        
+    //     return redirect()->route('hr.applicants.index')->with('success', 'Application Deleted Successfully');
+    // }
 }

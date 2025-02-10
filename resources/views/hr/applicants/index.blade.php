@@ -30,7 +30,21 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $application->applicant->first_name }} {{ $application->applicant->middle_name }} {{ $application->applicant->last_name }}</td>
                         <td>{{ $application->applicant->email }}</td>
-                        <td>{{ $application->applicant->status }}</td>
+
+                        <td>
+                            @if($application->status == 'pending')
+                                <span class="btn btn-warning btn-sm">Pending</span>
+                            @elseif($application->status == 'reviewed')
+                                <span class="btn btn-primary btn-sm">Reviewed</span>
+                            @elseif($application->status == 'shortlisted')
+                                <span class="btn btn-success btn-sm">Shortlisted</span>
+                            @elseif($application->status == 'rejected')
+                                <span class="btn btn-danger btn-sm">Rejected</span>
+                            @elseif($application->status == 'hired')
+                                <span class="btn btn-info btn-sm">Hired</span>
+                            @endif
+                        </td>
+
                         <td>{{ $application->applicant->phone_number }}</td>
                         <td>{{ $application->job->title }}</td>
                         <td>{{ $application->created_at->format('d-m-Y') }}</td>

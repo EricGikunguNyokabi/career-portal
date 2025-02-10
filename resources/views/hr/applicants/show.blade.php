@@ -208,19 +208,8 @@
                     @endif
                 </tbody>
             </table>
-
-
-           
-
-
-
-
-           
-
-
-
-
         </div>
+    
 
         <div class="card shadow-sm p-4 mt-4">
             <h4 class="mb-3">Job Applied For</h4>
@@ -240,9 +229,44 @@
             </table>
         </div>
 
+                <!-- Status Buttons Section -->
+        <div class="d-flex justify-content-center mt-4">
+            <p class="me-4">CURRENT STATUS : </p>
+            @if($application->status == 'pending')
+                <span class="btn btn-warning btn-sm">Pending</span>
+            @elseif($application->status == 'reviewed')
+                <span class="btn btn-primary btn-sm">Reviewed</span>
+            @elseif($application->status == 'shortlisted')
+                <span class="btn btn-success btn-sm">Shortlisted</span>
+            @elseif($application->status == 'rejected')
+                <span class="btn btn-danger btn-sm">Rejected</span>
+            @elseif($application->status == 'hired')
+                <span class="btn btn-info btn-sm">Hired</span>
+            @endif
+        </div>
+
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('hr.applicants.index') }}" class="btn btn-secondary">Back</a>
             
         </div>
+
+
+
+        <div class="d-flex justify-content-end mt-4 ms-auto">
+            
+            <!-- Application Status Update Buttons -->
+            <form action="{{ route('hr.applicants.updateStatus', $application->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
+
+                <button type="submit" name="status" value="reviewed" class="btn btn-primary btn-sm">Reviewed</button>
+                <button type="submit" name="status" value="shortlisted" class="btn btn-success btn-sm">Shortlisted</button>
+                <button type="submit" name="status" value="rejected" class="btn btn-danger btn-sm">Rejected</button>
+                <button type="submit" name="status" value="hired" class="btn btn-info btn-sm">Hired</button>
+            </form>
+        </div>
+
+
+
     </div>
 @endsection

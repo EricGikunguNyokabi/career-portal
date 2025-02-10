@@ -13,6 +13,9 @@ Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
     Route::get('/applicant-list', [ApplicantController::class, 'index'])->name('hr.applicants.index');
     Route::get('/applicants/{id}', [ApplicantController::class, 'show'])->name('hr.applicants.view'); 
     Route::get('/applicant/uploaded-document/{id}', [ApplicantController::class, 'view'])->name('hr.applicants.document.view');
+
+    Route::patch('/hr/applicants/{id}/update-status', [ApplicantController::class, 'updateStatus'])->name('hr.applicants.updateStatus');
+    
     
 
 
