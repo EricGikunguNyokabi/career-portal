@@ -27,7 +27,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/job-postings/{id}', [JobPostingController::class, 'destroy'])->name('admin.delete_job_posting');
 
     // Audit logs
-    Route::get('/audit-logs', [AuditLogController::class, 'index'])->name('admin.audit_logs.index');
+    // Route::get('/audit-logs', [AuditLogController::class, 'index'])->name('admin.audit_logs.index');
 
     
 

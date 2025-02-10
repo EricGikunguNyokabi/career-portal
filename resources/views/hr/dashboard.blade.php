@@ -51,6 +51,58 @@
             </div>
         </div>
 
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="text-uppercase mb-0">📢 Notifications</h5>
+                    </div>
+                    <div class="card-body">
+                        @if(auth()->user()->unreadNotifications->isEmpty())
+                            <p class="text-center text-muted fw-bold">🚀 No Notifications Available</p>
+                        @else
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Message</th>
+                                            <th>Received At</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(auth()->user()->unreadNotifications as $index => $notification)
+                                            <tr class="align-middle">
+                                                <td class="text-center">{{ $index + 1 }}</td>
+                                                <td class="text-success fw-bold">
+                                                    {{ $notification->data['message'] ?? 'No message available' }}
+                                                </td>
+                                                <td class="text-info">
+                                                    {{ $notification->created_at->diffForHumans() }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="{{ $notification->data['url'] ?? '#' }}" 
+                                                    class="btn btn-sm btn-outline-primary">
+                                                        🔗 View
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
         <!-- Charts and Graphs -->
 
         <div class="row row-cols-1 row-cols-md-1">

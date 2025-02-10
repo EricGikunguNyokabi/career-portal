@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\JobPosting;
 use App\Models\JobApplication;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Notifications\NewJobApplication;
+
+
 
 class JobApplicationController extends Controller
 {
     // Display job application history
     public function applicationHistory()
     {
-        // $applications = JobApplication::with('job')->where('applicant_id', auth()->id())->get();
-        // $applications = JobApplication::with('job')->where('applicant_id', auth()->id())->get(); // Eager load the job relationship
         $applications = JobApplication::where('applicant_id', auth()->id())->get(); // Fetch applications for the logged-in applicant
         return view('applicant.jobs.application_history', compact('applications')); // Replace with your actual view name
     }
@@ -22,14 +24,14 @@ class JobApplicationController extends Controller
     public function vacancies()
     {
         $jobs = JobPosting::all(); // Fetch all advertised jobs
-        return view('applicant.jobs.jobs_advertised', compact('jobs')); // Replace with your actual view name
+        return view('applicant.jobs.jobs_advertised', compact('jobs')); 
     }
 
     // Display a single job posting
     public function singleJob($id)
     {
         $job = JobPosting::findOrFail($id); // Fetch the job by ID
-        return view('applicant.jobs.single_job', compact('job')); // Replace with your actual view name
+        return view('applicant.jobs.single_job', compact('job')); 
     }
 
     // Apply for a job
@@ -43,7 +45,7 @@ class JobApplicationController extends Controller
             'document_id' => 'nullable|exists:documents,id',
         ]);
 
-        JobApplication::create([
+        $jobApplication = JobApplication::create([
             'applicant_id' => auth()->id(),
             'job_id' => $id,
             'education_id' => $request->education_id,
@@ -51,7 +53,17 @@ class JobApplicationController extends Controller
             'experience_id' => $request->experience_id,
             'referee_id' => $request->referee_id,
             'document_id' => $request->document_id,
+            'status' => 'pending', // Default status
         ]);
+
+        // Notify all HR users
+        $hrUsers = User::where('role', 'hr_team')->get();
+        $applicant = auth()->user(); // Get the logged-in user (applicant)
+
+
+        foreach ($hrUsers as $hr) {
+            $hr->notify(new NewJobApplication($jobApplication, $applicant)); // Pass both parameters
+        }
 
         return redirect()->route('applicant.application_history')->with('status', 'Application submitted successfully!');
     }

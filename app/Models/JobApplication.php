@@ -16,6 +16,7 @@ class JobApplication extends Model
         'experience_id',
         'referees_id',
         'document_id',
+        'status',
     ];
 
     public function applicant()
@@ -27,6 +28,7 @@ class JobApplication extends Model
     {
         return $this->belongsTo(JobPosting::class, 'job_id');
     }
+
 
     public function education()
     {

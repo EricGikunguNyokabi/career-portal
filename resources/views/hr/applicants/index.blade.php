@@ -17,6 +17,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Applicant's Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Phone Number</th>
                     <th scope="col">Position Applied</th>
                     <th scope="col">Application Date</th>
@@ -29,6 +30,7 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $application->applicant->first_name }} {{ $application->applicant->middle_name }} {{ $application->applicant->last_name }}</td>
                         <td>{{ $application->applicant->email }}</td>
+                        <td>{{ $application->applicant->status }}</td>
                         <td>{{ $application->applicant->phone_number }}</td>
                         <td>{{ $application->job->title }}</td>
                         <td>{{ $application->created_at->format('d-m-Y') }}</td>

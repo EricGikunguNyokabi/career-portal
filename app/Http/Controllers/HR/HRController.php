@@ -28,6 +28,10 @@ class HRController extends Controller
             ->groupBy('title')
             ->get();
 
+        // Notifications
+        auth()->user()->unreadNotifications->markAsRead();
+
+
         // Pass data to the view
         return view('hr.dashboard', compact('applications', 'jobPostings', 'jobCategories', 'positionsRequired'));
     }

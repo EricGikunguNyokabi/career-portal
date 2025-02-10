@@ -22,6 +22,8 @@ return new class extends Migration
             $table->foreignId('experience_id')->nullable()->constrained('previous_employments')->onDelete('cascade');
             $table->foreignId('referee_id')->nullable()->constrained('referees')->onDelete('cascade');
             $table->foreignId('document_id')->nullable()->constrained('documents')->onDelete('cascade');
+            // $table->string('status')->default('pending'); // Default status is 'pending'
+
             $table->timestamps();
         });
     }

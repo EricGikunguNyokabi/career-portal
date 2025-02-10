@@ -47,7 +47,19 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $application->job ? $application->job->title : 'Job not found' }}</td>
                                 <td>{{ $application->created_at->format('Y-m-d') }}</td>
-                                <td>{{ $application->status ?? 'Pending' }}</td>
+                                <td>
+                                    @if($application->status == 'pending')
+                                        <span class="btn btn-warning btn-sm">Pending</span>
+                                    @elseif($application->status == 'reviewed')
+                                        <span class="btn btn-primary btn-sm">Reviewed</span>
+                                    @elseif($application->status == 'shortlisted')
+                                        <span class="btn btn-success btn-sm">Shortlisted</span>
+                                    @elseif($application->status == 'rejected')
+                                        <span class="btn btn-danger btn-sm">Rejected</span>
+                                    @elseif($application->status == 'hired')
+                                        <span class="btn btn-info btn-sm">Hired</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('applicant.single_job_posting', $application->job_id) }}" class="btn btn-info btn-sm">
                                         View Details
