@@ -16,7 +16,7 @@ Welcome to my **Career Portal**, a web application designed to streamline job ap
 ### **2. Login Page**
 ![CAREER PORTAL](public/images/readmegit/login.png)
 - Applicants and HR personnel can log in using their credentials.
-- New users can register to create an account.
+- New users can register to create an account as job applicants.
 
 ---
 
@@ -80,22 +80,22 @@ Welcome to my **Career Portal**, a web application designed to streamline job ap
 
 ---
 
-### **3. Single Applicants View**
+### **3. Individual Applicant View**
 ![CAREER PORTAL](public/images/readmegit/single-applicants-details.png)
 
 ---
 
-### **4. View / Edit / Create Job Posting**
+### **4. View Job Postings**
 ![CAREER PORTAL](public/images/readmegit/view-job-postings.png)
 
 ---
 
-### **5. Create Job Posting**
+### **5. Create a Job Posting**
 ![CAREER PORTAL](public/images/readmegit/create-job-posting.png)
 
 ---
 
-### **6. Edit Job Posting**
+### **6. Edit a Job Posting**
 ![CAREER PORTAL](public/images/readmegit/edit-job-posting.png)
 
 ---
@@ -110,6 +110,25 @@ Welcome to my **Career Portal**, a web application designed to streamline job ap
 ---
 ## **Management Board Layout => Screenshots & Features**
 ---
+
+### **1. Management Dashboard**
+![CAREER PORTAL](public/images/readmegit/mgt-dashboard.png)
+
+---
+
+### **2. View Applicants List**
+![CAREER PORTAL](public/images/readmegit/mgt-applicants-info.png)
+
+---
+
+
+### **3. Job Posting List**
+![CAREER PORTAL](public/images/readmegit/mgt-job-postings.png)
+
+---
+
+
+
 
 
 ---

@@ -13,7 +13,69 @@
             </div>
         </div>
 
+
         <!-- Key Metrics -->
+        <h3>USER COUNT</h3>
+        <div class="row row-cols-3 row-cols-md-3 mb-4 text-uppercase">
+
+            <div class="col">
+                <a href="{{ route('admin.user_list') }}" class="text-decoration-none">
+                    <div class="card bg-secondary text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Registered Users</h5>
+                            <h3 class="card-text"> {{ $users }} </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.user_list') }}" class="text-decoration-none">
+                    <div class="card bg-primary text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Applicants</h5>
+                            <h3 class="card-text"> {{ $applicant }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col">
+                <a href="{{ route('admin.user_list') }}" class="text-decoration-none">
+                    <div class="card bg-info text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Human Resource </h5>
+                            <h3 class="card-text"> {{ $hr }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.user_list') }}" class="text-decoration-none">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title ">Board Of Management</h5>
+                            <h3 class="card-text"> {{ $management }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="{{ route('admin.user_list') }}" class="text-decoration-none">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Admin</h5>
+                            <h3 class="card-text"> {{ $admin }}   </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <h4>HR RELATED</h4>
         <div class="row row-cols-4 row-cols-md-4 mb-4 text-uppercase">
             <div class="col">
                 <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
@@ -25,92 +87,10 @@
                     </div>
                 </a>
             </div>
-
-
-            <div class="col">
-                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-secondary text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Registered Users</h5>
-                            <h3 class="card-text"> {{ $users }} </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-primary text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Registered Applicants</h5>
-                            <h3 class="card-text"> {{ $users }}   </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="col">
-                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-info text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Human Resource </h5>
-                            <h3 class="card-text"> {{ $users }}   </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-danger text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title ">Board Of Management</h5>
-                            <h3 class="card-text"> {{ $users }}   </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="{{ route('admin.job_postings') }}" class="text-decoration-none">
-                    <div class="card bg-danger text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Admins</h5>
-                            <h3 class="card-text"> {{ $users }}   </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-
-            
         </div>
 
         <!-- Charts and Graphs -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Applicants by Status</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="applicantsStatusChart" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Job Postings by Category</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="jobPostingsCategoryChart" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 

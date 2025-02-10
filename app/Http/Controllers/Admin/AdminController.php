@@ -11,9 +11,16 @@ class AdminController extends Controller
 {
     //
     public function dashboard(){
-        $jobPosting = JobPosting::all();
         $jobPostingCount = JobPosting::count();
+        
         $users = User::count();
-        return view("admin.dashboard", compact("jobPostingCount","users"));
+    
+        $admin = User::where('role', 'admin')->count();
+        $hr = User::where('role', 'hr_team')->count();
+        $management = User::where('role', 'management')->count();
+        $applicant = User::where('role', 'applicant')->count();
+    
+        return view("admin.dashboard", compact("jobPostingCount", "users", "admin", "hr", "management", "applicant"));
     }
+    
 }

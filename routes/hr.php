@@ -26,5 +26,13 @@ Route::prefix('hr')->middleware(['auth', 'role:hr_team'])->group(function () {
     Route::put('/job-postings/{id}/update', [JobPostingController::class, 'update'])->name('hr.job_posting.update');
     Route::delete('/job-postings/{id}/delete', [JobPostingController::class, 'destroy'])->name('hr.job_posting.delete');
 
+    //  Applicant Shortlisting & Status Management
+    Route::post('/applicants/{id}/shortlist', [ApplicantController::class, 'shortlist'])->name('hr.applicants.shortlist'); // Shortlist applicant
+    Route::post('/applicants/{id}/reject', [ApplicantController::class, 'reject'])->name('hr.applicants.reject'); // Reject applicant
+    Route::post('/applicants/{id}/hire', [ApplicantController::class, 'hire'])->name('hr.applicants.hire'); // Hire applicant
+
+    // Interview Scheduling
+
+
 
 });
