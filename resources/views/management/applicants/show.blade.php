@@ -3,7 +3,7 @@
 @section('title', 'Applicant Details')
 
 @section('side_navbar')
-    @include('layouts.mgt')
+    @include('layouts.hr')
 @endsection 
 
 @section('main')
@@ -11,7 +11,9 @@
         <h2 class="text-center mb-4">Applicant Details</h2>
 
         <div class="card shadow-sm p-4">
-            <h4 class="mb-3">Applicant's Personal Information</h4>
+            
+            <!-- Personal Information -->
+            <h4 class="mb-3">PERSONAL INFORMATION</h4>
             <table class="table table-bordered">
                 <tr>
                     <th>Name</th>
@@ -37,11 +39,191 @@
                     <th>Gender</th>
                     <td>{{ ucfirst($application->applicant->gender) }}</td>
                 </tr>
+                <tr>
+                    <th>Profile Picture</th>
+                    <td>
+                        <img src="{{ asset($application->applicant->profile_picture) }}" 
+                            alt="Profile Picture" 
+                            class="img-thumbnail" width="150">
+                    </td>
+                </tr>
             </table>
+
+            <!-- Education Background -->
+
+            <h4>EDUCATION HISTORY</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Academic Level</th>
+                        <th>Course</th>
+                        <th>Award</th>
+                        <th>Institution Name</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->education->isNotEmpty())
+                        @foreach($application->applicant->education as $edu)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $edu->academic_level }}</td>
+                                <td>{{ $edu->course }}</td>
+                                <td>{{ $edu->grade }}</td>
+                                <td>{{ $edu->institution_name }}</td>
+                                <td>{{ $edu->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center">No education records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
+            <h4>OTHER TRAININGS</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Course</th>
+                        <th>Award</th>
+                        <th>Institution Name</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->trainings->isNotEmpty())
+                        @foreach($application->applicant->trainings as $training)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $training->course }}</td>
+                                <td>{{ $training->grade }}</td>
+                                <td>{{ $training->institution_name }}</td>
+                                <td>{{ $training->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No training records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+            <h4>WORK EXPERIENCE</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Roles</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->work_experiences->isNotEmpty())
+                        @foreach($application->applicant->work_experiences as $experience)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $experience->job_title }}</td>
+                                <td>{{ $experience->company_name }}</td>
+                                <td>{{ $experience->responsibilities }}</td>
+                                <td>{{ $experience->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No work history records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+            <h4>REFEREES</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Relationship</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->referees->isNotEmpty())
+                        @foreach($application->applicant->referees as $referee)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $referee->name }}</td>
+                                <td>{{ $referee->relationship }}</td>
+                                <td>{{ $referee->email }}</td>
+                                <td>{{ $referee->phone }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No referee records found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
+            <h4>UPLOADED DOCUMENTS</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th></th>
+                        <th>Document Type</th>
+                        
+                        <th>File Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($application->applicant->documents->isNotEmpty())
+                        @foreach($application->applicant->documents as $document)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $document->document_type }}</td>
+                                <td>{{ $document->file_name }}</td>
+                               <td>
+                                    <a href="{{ route('mgt.applicants.document.view', ['id' => $document->file_name]) }}" class="btn btn-info btn-sm" target="_blank">
+                                            View Document
+                                    </a>
+                               </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="4" class="text-center">No document record found</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+
+
+           
+
+
+
+
+           
+
+
+
+
         </div>
 
         <div class="card shadow-sm p-4 mt-4">
-            <h4 class="mb-3">Job Applied for</h4>
+            <h4 class="mb-3">Job Applied For</h4>
             <table class="table table-bordered">
                 <tr>
                     <th>Job Title</th>
@@ -59,7 +241,7 @@
         </div>
 
         <div class="d-flex justify-content-between mt-4">
-            <a href="{{ route('hr.applicants.index') }}" class="btn btn-secondary">Back</a>
+            <a href="{{ route('mgt.applicant.index') }}" class="btn btn-secondary">Back</a>
             
         </div>
     </div>

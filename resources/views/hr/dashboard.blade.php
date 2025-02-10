@@ -19,7 +19,7 @@
                 <a href="{{ route('hr.job_postings.index')}}">
                     <div class="card bg-info text-white mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Jobs Posted</h5>
+                            <h5 class="card-title">No of Job Categories Posted</h5>
                             <h3 class="card-text">{{ $jobPostings }}</h3>
                         </div>
                     </div>
@@ -74,48 +74,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<!-- // Job Postings by Category Chart -->
-<script>
-    // document.addEventListener("DOMContentLoaded", function () {
-    //     var jobData = @json($jobCategories);
-        
-    //     var titles = jobData.map(item => item.title);
-    //     var positions = jobData.map(item => item.total_positions);
-
-    //     var ctx = document.getElementById('jobPostingsChart').getContext('2d');
-    //     new Chart(ctx, {
-    //         type: 'bar',
-    //         data: {
-    //             labels: titles,
-    //             datasets: [{
-    //                 label: 'Positions Needed',
-    //                 data: positions,
-    //                 backgroundColor: '#007bff',
-    //                 borderColor: '#0056b3',
-    //                 borderWidth: 1
-    //             }]
-    //         },
-    //         options: {
-    //             responsive: true,
-    //             scales: {
-    //                 y: {
-    //                     beginAtZero: true,
-    //                     title: {
-    //                         display: true,
-    //                         text: 'Positions Needed'
-    //                     }
-    //                 },
-    //                 x: {
-    //                     title: {
-    //                         display: true,
-    //                         text: 'Job Categories'
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     });
-    // });
-</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
