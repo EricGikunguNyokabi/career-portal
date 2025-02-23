@@ -1,5 +1,9 @@
 # CAREER PORTAL 
 
+# TO ACCESS MY PORTAL WHILE I'M ONLINE FOLLOW THIS LINK
+
+# https://2rqz4x2s-8000.uks1.devtunnels.ms/
+
 Welcome to my **Career Portal**, a web application designed to streamline job applications and career management for applicants and HR teams. This system allows applicants to create profiles, upload qualifications, browse job listings, and apply for positions.
 
 ---

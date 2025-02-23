@@ -38,7 +38,7 @@ class ApplicantController extends Controller
 
     public function view($file_name)
     {
-        $filePath = 'documents/' . $file_name; // Ensure your files are stored in 'storage/app/public/documents/'
+        $filePath = 'documents/' . $file_name; // Files directory 'storage/app/public/documents/'
         
         if (!Storage::disk('public')->exists($filePath)) {
             abort(404, 'Document not found.');
